@@ -6,38 +6,29 @@
     <Grid Background="#38785e">
 
         <ScrollView>
-            <VerticalStackLayout
-        Padding="30,0"
-        Spacing="25">
+            <VerticalStackLayout Padding="30,0" Spacing="25">
 
                 <Image
-            
-                    
-            Margin="30"
-            Source="bit_buggy_image.png"
-            HeightRequest="300"
-            WidthRequest="300"
-            Aspect="AspectFit" 
-            SemanticProperties.Description="dot net bot in a race car number eight" 
-                    />
-
-
-
+                    Margin="30"
+                    Source="bit_buggy_image.png"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    Aspect="AspectFit" 
+                    SemanticProperties.Description="bit buggy" />
 
                 <Label
-            Text="LOGIN"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level3"
-             VerticalOptions="Start"
-                    Margin="0"
-              />
+                    Text="LOGIN"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level3"
+                    VerticalOptions="Start"
+                    Margin="0" />
 
                 <Entry
-                   WidthRequest="300"
-                   Placeholder="UserName"
+                    WidthRequest="300"
+                    Placeholder="UserName"
                     BackgroundColor="White"
                     BindingContext="0"
-                       Margin="0"/>
+                    Margin="0"/>
 
 
                 <Entry
@@ -48,21 +39,18 @@
                     Margin="0"/>
 
                 <Button
-                  Text="Sign In"
-                  FontAttributes="Bold"
-                   FontAutoScalingEnabled="True" 
+                    Text="Sign In"
+                    FontAttributes="Bold"
+                    FontAutoScalingEnabled="True" 
                     WidthRequest="200"
-                     HorizontalOptions="Center"
+                    HorizontalOptions="Center"
                     BackgroundColor="#38785e"
                     BorderColor="#ad8d49"
                     BorderWidth="2"
                     Clicked="OnSignInButtonClicked"
                     Margin="0"/>
 
-
-
                 <Button
-                    
                     Text="Forgot UserName"
                     FontAttributes="Italic"
                     FontAutoScalingEnabled="True" 
@@ -76,8 +64,6 @@
                     Clicked="OnForgotUserNameClicked"
                     VerticalOptions="Start"
                     Margin="0"/>
-
-
 
                 <Button
                     Text="Forgot Password"
@@ -95,15 +81,7 @@
                     Scale="1"
                     Margin="-15"/>
 
-
-
-
-
-
-
             </VerticalStackLayout>
         </ScrollView>
-
     </Grid>
-
 </ContentPage>
