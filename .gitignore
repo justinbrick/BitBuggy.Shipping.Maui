@@ -5447,3 +5447,6 @@
 /.idea/.idea.BitBuggy.Shipping.Maui/.idea/encodings.xml
 /.idea/.idea.BitBuggy.Shipping.Maui/.idea/indexLayout.xml
 /.idea/.idea.BitBuggy.Shipping.Maui/.idea/vcs.xml
+/.vs/BitBuggy.Shipping.Maui
+/obj/Debug
+/BitBuggy.Shipping.Maui.csproj.user
