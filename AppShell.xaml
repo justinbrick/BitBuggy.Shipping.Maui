@@ -8,9 +8,15 @@
     Shell.FlyoutBehavior="Disabled"
     Title="BitBuggy.Shipping.Maui">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-   
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="home" />
+
+        <ShellContent
+            Title="Account"
+            ContentTemplate="{DataTemplate local:AccountPage}"
+            Route="account" />
+    </FlyoutItem>
 </Shell>

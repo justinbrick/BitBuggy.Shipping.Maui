@@ -3,24 +3,10 @@
 public partial class MainPage : ContentPage
 {
     int count = 0;
-
-    public MainPage()
-    {
+    private readonly ShippingService? _shippingService;
+    public MainPage(ShippingService shippingService)
+    {   
+        _shippingService = shippingService;
         InitializeComponent();
-    }
-
-    async void OnSignInButtonClicked(object sender, EventArgs e)
-    {
-
-    }
-
-    async void OnForgotUserNameClicked(object sender, EventArgs e)
-    {
-
-    }
-
-    async void OnForgotPasswordClicked(object sender, EventArgs e)
-    {
-
     }
 }

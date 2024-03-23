@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
+             x:Class="BitBuggy.Shipping.Maui.AccountPage"
+             x:DataType="model:AccountViewModel"
+             Title="Account">
+
+
+
+    <VerticalStackLayout>
+        <Label HorizontalOptions="Center" IsVisible="{Binding SignedIn}">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Hello, "/>
+                    <Span Text="{Binding Account.Username}"/>
+                    <Span Text="!"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label 
+            Text="You are not signed in."
+            HorizontalOptions="Center"
+            IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Sign In" Command="{Binding SignInCommand}" IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}"/>
+            <Button Text="Sign Out" Command="{Binding SignOutCommand}" IsVisible="{Binding SignedIn}"/>
+        </StackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>

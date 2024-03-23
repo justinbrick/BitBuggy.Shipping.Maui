@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BitBuggy.Shipping.Maui;
-internal class ShippingService
+public class ShippingService
 {
     private readonly HttpClient _client = new()
     { 
@@ -13,5 +13,5 @@ internal class ShippingService
         BaseAddress = new Uri("https://localhost:8000")
     };
 
-
+    public ShippingService() { }
 }

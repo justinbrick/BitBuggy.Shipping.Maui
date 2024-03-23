@@ -47,7 +47,6 @@
                     BackgroundColor="#38785e"
                     BorderColor="#ad8d49"
                     BorderWidth="2"
-                    Clicked="OnSignInButtonClicked"
                     Margin="0"/>
 
                 <Button
@@ -61,7 +60,6 @@
                     BackgroundColor="#38785e"
                     BorderColor="Black"
                     BorderWidth="1"
-                    Clicked="OnForgotUserNameClicked"
                     VerticalOptions="Start"
                     Margin="0"/>
 
@@ -76,7 +74,6 @@
                     BackgroundColor="#38785e"
                     BorderColor="Black"
                     BorderWidth="1"
-                    Clicked="OnForgotPasswordClicked"
                     VerticalOptions="Start"
                     Scale="1"
                     Margin="-15"/>
