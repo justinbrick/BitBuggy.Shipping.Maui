@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BitBuggy.Shipping.Maui.ViewModels;
+
+/// <summary>
+/// Contains information regarding the current account. 
+/// 
+/// </summary>
 public class AccountViewModel : INotifyPropertyChanged
 {
 

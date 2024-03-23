@@ -9,7 +9,7 @@
 
 
     <VerticalStackLayout>
-        <Label HorizontalOptions="Center" IsVisible="{Binding SignedIn}">
+        <Label HorizontalOptions="Center" IsVisible="{Binding SignedIn}" Margin="30">
             <Label.FormattedText>
                 <FormattedString>
                     <Span Text="Hello, "/>
@@ -19,12 +19,19 @@
             </Label.FormattedText>
         </Label>
 
-        <Label 
-            Text="You are not signed in."
-            HorizontalOptions="Center"
-            IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}"/>
+        <StackLayout Orientation="Vertical" Margin="30" HorizontalOptions="Center" IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}">
+            <Label 
+                Style="{StaticResource Headline}"
+                Text="You are not signed in."
+                HorizontalOptions="Center"/>
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label 
+                Style="{StaticResource Subhead}"
+                Text="Please sign in to continue."
+                HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="15">
             <Button Text="Sign In" Command="{Binding SignInCommand}" IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}"/>
             <Button Text="Sign Out" Command="{Binding SignOutCommand}" IsVisible="{Binding SignedIn}"/>
         </StackLayout>

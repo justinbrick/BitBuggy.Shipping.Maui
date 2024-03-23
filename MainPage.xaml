@@ -3,11 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BitBuggy.Shipping.Maui.MainPage">
 
-    <Grid Background="#38785e">
-
+    <Grid BackgroundColor="{StaticResource BitGreenLight}">
         <ScrollView>
             <VerticalStackLayout Padding="30,0" Spacing="25">
-
                 <Image
                     Margin="30"
                     Source="bit_buggy_image.png"
@@ -25,7 +23,7 @@
 
                 <Entry
                     WidthRequest="300"
-                    Placeholder="UserName"
+                    Placeholder="Username"
                     BackgroundColor="White"
                     BindingContext="0"
                     Margin="0"/>

@@ -6,12 +6,17 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="PrimaryDark">#ac99ea</Color>
-    <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="SecondaryDarkText">#9880e5</Color>
-    <Color x:Key="Tertiary">#2B0B98</Color>
+    <Color x:Key="BitGreenLight">#38785e</Color>
+    <Color x:Key="BitGreenDark">#053426</Color>
+
+    <!-- One thing that confused me, but I think this is the proper way to interpret this. -->
+    <!-- Primary Dark, is the primary color when you're in dark mode. You want this to be lighter for greater contrast. Vice versa. -->
+    <Color x:Key="Primary">#053426</Color>
+    <Color x:Key="PrimaryDark">#38785e</Color>
+    <Color x:Key="PrimaryDarkText">White</Color>
+    <Color x:Key="Secondary">#ad8d49</Color>
+    <Color x:Key="SecondaryDarkText">White</Color>
+    <Color x:Key="Tertiary">Purple</Color>
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
