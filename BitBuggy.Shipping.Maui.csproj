@@ -71,19 +71,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="AccountPage.xaml.cs">
+      <Compile Update="Views\AccountPage.xaml.cs">
         <DependentUpon>AccountPage.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <MauiXaml Update="AccountPage.xaml">
+      <MauiXaml Update="Views\AccountPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Views\" />
     </ItemGroup>
 
 </Project>
