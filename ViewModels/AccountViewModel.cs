@@ -1,4 +1,5 @@
-﻿using Microsoft.Identity.Client;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,15 +18,17 @@ public class AccountViewModel : INotifyPropertyChanged
 {
 
     private readonly IPublicClientApplication _clientApplication;
+    private readonly ILogger _logger;
     private bool _refreshed = false;
 
     public ICommand SignInCommand { get; }
     public ICommand SignOutCommand { get; }
     public ICommand RefreshCommand { get; }
 
-    public AccountViewModel(IPublicClientApplication publicClient)
+    public AccountViewModel(IPublicClientApplication publicClient, ILogger<AccountViewModel> logger)
     {
         _clientApplication = publicClient;
+        _logger = logger;
         SignInCommand = new Command(async () => await SignInAsync());
         SignOutCommand = new Command(async () => await SignOutAsync());
         RefreshCommand = new Command(async () => await RefreshAsync());
@@ -59,7 +62,7 @@ public class AccountViewModel : INotifyPropertyChanged
 	/// <returns></returns>
     public async Task SignInAsync()
     {
-        AuthenticationResult? token = await _clientApplication.AcquireTokenInteractive(["User.Read"])
+        AuthenticationResult? token = await _clientApplication.AcquireTokenInteractive(["openid", "offline_access", "https://bitbuggy.onmicrosoft.com/shipping/Shipment.Write"])
             .WithPrompt(Prompt.SelectAccount)
             .ExecuteAsync();
 

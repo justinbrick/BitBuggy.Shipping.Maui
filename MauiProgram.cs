@@ -7,7 +7,7 @@ namespace BitBuggy.Shipping.Maui;
 
 public static class MauiProgram
 {
-    const string ClientId = "392123fa-9f8a-4001-99fa-ab1a3d51a9df";
+    const string ClientId = "8fb6f658-02b8-4a68-84ae-6d0a8b7a865e";
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
@@ -21,29 +21,27 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<IPublicClientApplication>(services =>
         {
+            PublicClientApplicationBuilder builder = PublicClientApplicationBuilder
+                .Create(ClientId)
+                // B2C: Tenant Name: bitbuggy, Tenant ID: bitbuggy.onmicrosoft.com, use tfp
+                .WithB2CAuthority("https://bitbuggy.b2clogin.com/tfp/bitbuggy.onmicrosoft.com/B2C_1_BitBuggyLogin")
+                .WithRedirectUri($"msal{ClientId}://auth");
+
             // https://learn.microsoft.com/en-us/azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication
 #if ANDROID
             // Android Devices
-            return PublicClientApplicationBuilder
-                .Create(ClientId)
-                .WithAuthority(AadAuthorityAudience.AzureAdAndPersonalMicrosoftAccount)
-                .WithRedirectUri($"msal{ClientId}://auth")
+            return builder
                 .WithParentActivityOrWindow(() => Platform.CurrentActivity)
                 .Build();
 #elif IOS
             // iOS - Uses AdalCache for MSAL
-            return PublicClientApplicationBuilder
-                .Create(ClientId)
-                .WithAuthority(AadAuthorityAudience.AzureAdAndPersonalMicrosoftAccount)
+            return builder
                 .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
-                .WithRedirectUri($"msal{ClientId}://auth")
                 .Build();
 #else
             // Windows, macOS, Linux
-            return PublicClientApplicationBuilder
-                .Create(ClientId)
-                .WithAuthority(AadAuthorityAudience.AzureAdAndPersonalMicrosoftAccount)
-                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+            return builder
+                .WithRedirectUri("https://bitbuggy.b2clogin.com/oauth2/nativeclient")
                 .Build();
 #endif
         });
