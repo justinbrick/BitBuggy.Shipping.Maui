@@ -18,5 +18,7 @@
             Title="Account"
             ContentTemplate="{DataTemplate local:AccountPage}"
             Route="account" />
+        
+        
     </FlyoutItem>
 </Shell>

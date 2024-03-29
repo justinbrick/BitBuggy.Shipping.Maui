@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
-             x:Class="BitBuggy.Shipping.Maui.AccountPage"
+             x:Class="BitBuggy.Shipping.Maui.Views.AccountPage"
              x:DataType="model:AccountViewModel"
              Title="Account">
 

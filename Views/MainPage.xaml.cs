@@ -1,4 +1,4 @@
-﻿namespace BitBuggy.Shipping.Maui;
+﻿namespace BitBuggy.Shipping.Maui.Views;
 
 public partial class MainPage : ContentPage
 {
