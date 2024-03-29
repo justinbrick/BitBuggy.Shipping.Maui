@@ -18,5 +18,10 @@
             Title="Account"
             ContentTemplate="{DataTemplate local:AccountPage}"
             Route="account" />
+
+        <ShellContent
+            Title="Customer"
+            ContentTemplate="{DataTemplate local:CustomerPage}"
+            Route="account"/>
     </FlyoutItem>
 </Shell>

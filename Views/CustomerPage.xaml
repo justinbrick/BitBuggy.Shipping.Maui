@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BitBuggy.Shipping.Maui.Views.CustomerPage"
+             Title="CustomerPage">
+
+
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+
+
+            <Grid Background="#38785e" HeightRequest="300">
+
+
+                <Image
+                Margin="30"
+                Source="bit_buggy_image.png"
+                HeightRequest="250"
+                WidthRequest="250"
+                Aspect="AspectFit"
+                MaximumHeightRequest="250"
+                MaximumWidthRequest="250"
+                MinimumHeightRequest="150"
+                MinimumWidthRequest="150"
+            />
+
+
+
+                <Label
+                Text="Shipment Tracking Interface"
+                TextColor="#ad8d49"  
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                VerticalOptions="End"
+            />
+
+
+
+
+            </Grid>
+
+
+
+
+            <!-- Borders with green background -->
+            <Grid RowSpacing="0" Margin="0,-26,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <!-- Left border -->
+                <Frame Grid.Column="0" BackgroundColor="#38785e">
+                    <StackLayout BackgroundColor="#06543c">
+
+
+
+                        <HorizontalStackLayout HorizontalOptions="Start">
+
+                            <VerticalStackLayout VerticalOptions="Start" Margin="0,10,0,0">
+
+                                <Label Text="Item # And Name" TextColor="#ad8d49" HorizontalOptions="Center" Margin="0,10,0,0" FontSize="Title"/>
+
+                                <ImageButton
+                        BorderColor="#ad8d49"    
+                        BorderWidth="2"    
+                        BackgroundColor="#06543c"
+                        Source="productimagehuge.png"
+                        HeightRequest="300"
+                        WidthRequest="200"
+                        Margin="40"
+                        VerticalOptions="Center"    
+                        HorizontalOptions="Start"
+                        MaximumHeightRequest="300"
+                        MaximumWidthRequest="200"
+                        MinimumHeightRequest="150"
+                        MinimumWidthRequest="100"    />
+
+
+                            </VerticalStackLayout>
+
+
+                            <VerticalStackLayout VerticalOptions="Start" Margin="0,100,0,0">
+
+                                <HorizontalStackLayout HorizontalOptions="Start">
+
+                                    <Button Background="#06543c" BorderColor="#ad8d49" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,10"/>
+                                    <Label Text="Your Item is being Processed" TextColor="#ad8d49" FontAttributes="Bold" Margin="10,0,0,0"/>
+
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout HorizontalOptions="Start">
+
+                                    <Button Background="#06543c" BorderColor="#ad8d49" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,10"/>
+                                    <Label Text="Your Item is being SHipped to our Warehouse in " TextColor="#ad8d49" FontAttributes="Bold" Margin="10,0,0,0"/>
+                                    <Label Text="North Carolina" TextColor="#ad8d49" FontAttributes="Bold" Margin="5,0,0,0"/>
+
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout HorizontalOptions="Start">
+
+                                    <Button Background="#06543c" BorderColor="#ad8d49" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,10"/>
+                                    <Label Text="Your Item is out for Delivery" TextColor="#ad8d49" FontAttributes="Bold" Margin="10,0,0,0"/>
+
+
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout HorizontalOptions="Start">
+
+                                    <Button Background="#06543c" BorderColor="#ad8d49" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,10"/>
+                                    <Label Text="Your Item is Deliverered" TextColor="#ad8d49" FontAttributes="Bold" Margin="10,0,0,0"/>
+
+                                </HorizontalStackLayout>
+
+
+
+
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+
+
+
+
+
+
+
+
+
+                        <!-- Your content here -->
+                    </StackLayout>
+                </Frame>
+
+
+
+
+
+                <!-- Right border -->
+                <Frame Grid.Column="2" BackgroundColor="#38785e">
+                    <StackLayout BackgroundColor="#06543c">
+
+                        <VerticalStackLayout>
+
+                            <Label Text="Customer Name" TextColor="#ad8d49" FontSize="Title" HorizontalTextAlignment="Center"/>
+                            <!-- <Line BackgroundColor="#ad8d49" StrokeLineCap="Flat" IsVisible="true" StrokeThickness="3" WidthRequest="3"/> -->
+
+                            <HorizontalStackLayout HorizontalOptions="Center">
+
+                                <ImageButton BackgroundColor="#06543c" BorderColor="#ad8d49" BorderWidth="2" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,100,40,0" MinimumWidthRequest="90" MinimumHeightRequest="90" MaximumWidthRequest="90" MaximumHeightRequest="90" Source="productimagehuge.png"  />
+                                <Label Text="Item One" TextColor="#ad8d49" Margin="0,100,400,0" FontSize="Medium" HorizontalOptions="Start" />
+
+
+
+
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout HorizontalOptions="Center">
+
+                                <ImageButton BackgroundColor="#06543c" BorderColor="#ad8d49" BorderWidth="2" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,10,40,0" MinimumWidthRequest="90" MinimumHeightRequest="90" MaximumWidthRequest="90" MaximumHeightRequest="90" Source="productimagehuge.png"  />
+                                <Label Text="Item Two" TextColor="#ad8d49" Margin="0,10,400,0" FontSize="Medium" HorizontalOptions="Start" />
+
+
+
+
+                            </HorizontalStackLayout>
+
+
+                        </VerticalStackLayout>
+
+                        <!-- Your content here -->
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
