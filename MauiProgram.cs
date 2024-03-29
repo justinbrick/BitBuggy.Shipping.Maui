@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Client;
 using BitBuggy.Shipping.Maui.ViewModels;
+using BitBuggy.Shipping.Maui.Views;
 
 namespace BitBuggy.Shipping.Maui;
 
