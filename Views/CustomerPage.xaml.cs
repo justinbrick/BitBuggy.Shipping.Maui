@@ -2,8 +2,13 @@ namespace BitBuggy.Shipping.Maui.Views;
 
 public partial class CustomerPage : ContentPage
 {
-	public CustomerPage()
+    private readonly ShippingService _shippingService;
+
+	public CustomerPage(ShippingService shippingService)
 	{
 		InitializeComponent();
-	}
+        _shippingService = shippingService;
+    }
+
+
 }

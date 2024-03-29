@@ -53,12 +53,13 @@ public static class MauiProgram
 
         // Static Viewmodels
         builder.Services
-            .AddSingleton<AccountViewModel>();
-        
+            .AddSingleton<AccountViewModel>(); 
+
         // Pages
         builder.Services
             .AddSingleton<MainPage>()
-            .AddSingleton<AccountPage>();
+            .AddSingleton<AccountPage>()
+            .AddSingleton<CustomerPage>();
         
 #if DEBUG
         builder.Logging.AddDebug();

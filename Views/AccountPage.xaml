@@ -6,8 +6,6 @@
              x:DataType="model:AccountViewModel"
              Title="Account">
 
-
-
     <VerticalStackLayout>
         <Label HorizontalOptions="Center" IsVisible="{Binding SignedIn}" Margin="30">
             <Label.FormattedText>
