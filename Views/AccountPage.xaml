@@ -24,7 +24,7 @@
                 HorizontalOptions="Center"/>
 
             <Label 
-                Style="{StaticResource Subhead}"
+                Style="{StaticResource SubHeadline}"
                 Text="Please sign in to continue."
                 HorizontalOptions="Center"/>
         </StackLayout>
