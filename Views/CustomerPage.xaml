@@ -20,143 +20,11 @@
 
     <ScrollView>
 
-        <StackLayout
-            Padding="30,0"
-            Orientation="Vertical"
-            Spacing="25">
-            <Image
-                Margin="30"
-                Aspect="AspectFit"
-                HorizontalOptions="Center"
-                Source="bit_buggy_image.png"
-                WidthRequest="250" />
-
-            <Label
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Center"
-                Text="Shipment Tracking Interface"
-                TextColor="{StaticResource BitGoldLight}"
-                VerticalOptions="End" />
-
-            <FlexLayout FlowDirection="LeftToRight" Direction="Column" Wrap="Wrap">
-                <!--  Order Status  -->
-                <Frame Style="{StaticResource FrameStyle}">
-                    <StackLayout Orientation="Vertical">
-
-                        <Label
-                            Margin="0,10,0,0"
-                            FontSize="Title"
-                            HorizontalOptions="Center"
-                            Text="Item # And Name"
-                            TextColor="{StaticResource BitGoldLight}" />
-
-                        <StackLayout Orientation="Horizontal">
-                            <ImageButton
-                                Margin="40"
-                                BackgroundColor="{StaticResource BitGreenLight}"
-                                BorderColor="{StaticResource BitGoldLight}"
-                                BorderWidth="2"
-                                HeightRequest="300"
-                                HorizontalOptions="Start"
-                                MaximumHeightRequest="300"
-                                MaximumWidthRequest="200"
-                                MinimumHeightRequest="150"
-                                MinimumWidthRequest="100"
-                                Source="productimagehuge.png"
-                                VerticalOptions="Center"
-                                WidthRequest="200" />
-
-                            <VerticalStackLayout Margin="0,100,0,0" VerticalOptions="Start">
-                                <HorizontalStackLayout HorizontalOptions="Start">
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is being Processed"
-                                        TextColor="{StaticResource BitGoldLight}" />
-                                </HorizontalStackLayout>
-
-                                <HorizontalStackLayout HorizontalOptions="Start">
-
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is being Shipped to our Warehouse in "
-                                        TextColor="{StaticResource BitGoldLight}" />
-                                    <Label
-                                        Margin="5,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="North Carolina"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-                                </HorizontalStackLayout>
-
-                                <HorizontalStackLayout HorizontalOptions="Start">
-
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is out for Delivery"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-
-                                </HorizontalStackLayout>
-
-                                <HorizontalStackLayout HorizontalOptions="Start">
-
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is Deliverered"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-
-
-                <!--  Customer Orders  -->
-                <StackLayout Orientation="Vertical" />
-                <Frame />
-            </FlexLayout>
-
-        </StackLayout>
-        <StackLayout Orientation="Vertical">
+        <StackLayout>
 
 
             <StackLayout Orientation="Vertical" Background="{StaticResource BitGreenLight}" HeightRequest="300">
-                <Image
+            <Image
                      Aspect="AspectFit"
                     HeightRequest="250"
                     MaximumHeightRequest="250"
@@ -169,7 +37,7 @@
 
 
 
-                <Label
+            <Label
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalOptions="Center"
@@ -180,12 +48,12 @@
 
 
 
-            </StackLayout>
+        </StackLayout>
 
 
 
 
-        
+
         <!--  Borders with green background  -->
 
             <StackLayout Orientation="Horizontal" >
@@ -332,7 +200,7 @@
         <!--  Right border  -->
 
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" WidthRequest="1097">
-                    <FlexLayout Direction="Column" FlowDirection="LeftToRight" BackgroundColor="{StaticResource BitGreenDark}">
+                    <FlexLayout Direction="Column" FlowDirection="LeftToRight" AlignContent="Stretch" BackgroundColor="{StaticResource BitGreenDark}">
 
                         <StackLayout Orientation="Vertical">
 
