@@ -27,7 +27,7 @@
         <ApplicationTitle>BitBuggy.Shipping.Maui</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.bitbuggy.shipping.maui</ApplicationId>
+        <ApplicationId>dev.bitbuggy.shipping.maui</ApplicationId>
 
         <!-- Versions -->
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

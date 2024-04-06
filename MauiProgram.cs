@@ -8,7 +8,7 @@ namespace BitBuggy.Shipping.Maui;
 
 public static class MauiProgram
 {
-    const string ClientId = "8fb6f658-02b8-4a68-84ae-6d0a8b7a865e";
+    public const string ClientId = "8fb6f658-02b8-4a68-84ae-6d0a8b7a865e";
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
