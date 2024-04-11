@@ -4,7 +4,10 @@ using Org.BouncyCastle.Cms;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net;
+
 using System.Text.Json;
+
+
 using System.Windows.Input;
 
 namespace BitBuggy.Shipping.Maui.ViewModels;
@@ -43,7 +46,10 @@ class ShipmentListViewModel : INotifyPropertyChanged
     }
 
     private AuthenticationResult? _accessToken;
+
     private string[] _orders;
+
+
 
     public ShipmentListViewModel(IPublicClientApplication clientApplication)
     {
@@ -62,7 +68,11 @@ class ShipmentListViewModel : INotifyPropertyChanged
             
         } catch (Exception ex) 
         {
+
             return;
+
+
+
         }
     }
 
@@ -84,7 +94,8 @@ class ShipmentListViewModel : INotifyPropertyChanged
         } catch (Exception ex)
         {
             return;
-        }
+
+        } 
     }
 
     private ObservableCollection<Shipping.Model.Shipment> _shipments = new ObservableCollection<Shipping.Model.Shipment>(); //add order(s) that should be visible on first screen, clear for next page of orders
@@ -102,7 +113,9 @@ class ShipmentListViewModel : INotifyPropertyChanged
     }
 
     public AuthenticationResult? AccessToken { get => _accessToken; set => _accessToken = value; }
+
     public string[] Orders { get => _orders; set => _orders = value; }
+
 }
 
 //class Shipment
