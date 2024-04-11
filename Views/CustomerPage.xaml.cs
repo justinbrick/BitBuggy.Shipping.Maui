@@ -1,3 +1,6 @@
+using Microsoft.UI.Xaml;
+using System.Windows.Controls;
+
 namespace BitBuggy.Shipping.Maui.Views;
 
 public partial class CustomerPage : ContentPage
@@ -8,7 +11,12 @@ public partial class CustomerPage : ContentPage
 	{
 		InitializeComponent();
         _shippingService = shippingService;
+        
+        
     }
 
-
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        //api request for orders
+    }
 }
