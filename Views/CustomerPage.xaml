@@ -32,31 +32,39 @@
         <StackLayout>
 
             <!--  Hero  -->
-            <StackLayout
+            <FlexLayout
                 Background="{StaticResource BitGreenLight}"
-                HeightRequest="300"
-                Orientation="Vertical">
+                HorizontalOptions="Center">
+                
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 100%, Android=100%, iOS=100%}">
+               
+                    <VerticalStackLayout>
 
-                <!--  BitBuggy Logo  -->
-                <Image
+                        <!--  BitBuggy Logo  -->
+                        <Image
                     Margin="15"
-                    Aspect="AspectFit"
-                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HeightRequest="100"
+                    WidthRequest="100"
                     Source="bit_buggy_image.png" />
 
-                <!--  Label for the Shipment Tracking Interface  -->
-                <Label
+                        <!--  Label for the Shipment Tracking Interface  -->
+                        <Label
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     Text="Shipment Tracking Interface"
                     TextColor="{StaticResource BitGoldLight}"
                     VerticalOptions="End" />
-            </StackLayout>
+                    </VerticalStackLayout>
+               
+            </Frame>
+            </FlexLayout>
 
             <!--  Borders with green background  -->
 
-            <FlexLayout
+            <FlexLayout 
                 JustifyContent="SpaceBetween"
                 VerticalOptions="FillAndExpand"
                 Wrap="{OnPlatform Wrap,
@@ -65,7 +73,7 @@
                 <!--  Left border  -->
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 47%, Android=100%, iOS=100%}">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 50%, Android=100%, iOS=100%}">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
@@ -109,84 +117,47 @@
 
 
                 <!--  Right border  -->
+
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 50%, Android=100%, iOS=100%}">
-                    <FlexLayout
-                        AlignContent="Stretch"
-                        BackgroundColor="{StaticResource BitGreenDark}"
-                        Direction="Column"
-                        FlowDirection="LeftToRight">
-
-                        <StackLayout Orientation="Vertical">
-
+                    <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
+                        <!--  Top to Bottom Status  -->
+                        <VerticalStackLayout Margin="10" VerticalOptions="Start">
                             <Label
-                                FontSize="Title"
-                                HorizontalTextAlignment="Center"
-                                Text="{Binding CustomerName}"
-                                TextColor="{StaticResource BitGoldLight}" />
+                 Margin="10"
+                 FontSize="Title"
+                 HorizontalOptions="Center"
+                 Text="Item # And Name"
+                 TextColor="{StaticResource BitGoldLight}" />
 
-                            <Line
-                                BackgroundColor="{StaticResource BitGoldLight}"
-                                IsVisible="true"
-                                StrokeLineCap="Flat"
-                                StrokeThickness="3"
-                                WidthRequest="3" />
+                            <ImageButton
+                 Margin="40"
+                 Aspect="AspectFit"
+                 BackgroundColor="{StaticResource BitGreenDark}"
+                 BorderColor="{StaticResource BitGoldLight}"
+                 BorderWidth="2"
+                 HorizontalOptions="Center"
+                 Source="productimagehuge.png"
+                 VerticalOptions="Center" />
 
+                            <!--  Status Buttons  -->
+                            <StackLayout
+                 Margin="0,100,0,0"
+                 HorizontalOptions="Center"
+                 Orientation="Horizontal"
+                 VerticalOptions="Start">
 
-                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-
-                                <ImageButton
-                                    Margin="0,100,40,0"
-                                    BackgroundColor="{StaticResource BitGreenDark}"
-                                    BorderColor="{StaticResource BitGoldLight}"
-                                    BorderWidth="2"
-                                    HorizontalOptions="Center"
-                                    MaximumHeightRequest="90"
-                                    MaximumWidthRequest="90"
-                                    MinimumHeightRequest="90"
-                                    MinimumWidthRequest="90"
-                                    Source="{Binding ItemImage1}"
-                                    VerticalOptions="Start" />
-                                <Label
-                                    Margin="0,100,400,0"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Start"
-                                    Text="{Binding ItemLabel1}"
-                                    TextColor="{StaticResource BitGoldLight}" />
-
-
-
-
+                                <!--  Center for both  -->
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
                             </StackLayout>
-
-                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-
-                                <ImageButton
-                                    Margin="0,10,40,0"
-                                    BackgroundColor="{StaticResource BitGreenDark}"
-                                    BorderColor="{StaticResource BitGoldLight}"
-                                    BorderWidth="2"
-                                    HorizontalOptions="Center"
-                                    Source="{Binding ItemImage2}"
-                                    VerticalOptions="Start" />
-                                <Label
-                                    Margin="0,10,400,0"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Start"
-                                    Text="{Binding ItemLabel2}"
-                                    TextColor="{StaticResource BitGoldLight}" />
-
-
-
-
-                            </StackLayout>
-
-
-                        </StackLayout>
+                        </VerticalStackLayout>
 
 
                         <!--  Your content here  -->
 
-                    </FlexLayout>
+                    </StackLayout>
                 </Frame>
             </FlexLayout>
 
