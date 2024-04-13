@@ -1,5 +1,3 @@
-using Microsoft.UI.Xaml;
-using System.Windows.Controls;
 
 namespace BitBuggy.Shipping.Maui.Views;
 

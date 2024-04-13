@@ -15,69 +15,51 @@
                 <Setter Property="CornerRadius" Value="10" />
                 <Setter Property="BackgroundColor" Value="{StaticResource BitGreenDark}" />
                 <Setter Property="WidthRequest" Value="500" />
+
             </Style>
             <viewmodels:ShipmentStatusViewModel x:Key="CurrentStatusModel" x:Name="CurrentStatus" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView>
+    <ScrollView Background="{StaticResource BitGreenLight}">
 
         <StackLayout>
-            
 
-            <StackLayout Orientation="Vertical" Background="{StaticResource BitGreenLight}" HeightRequest="300">
-            <Image
-                     Aspect="AspectFit"
-                    HeightRequest="250"
-                    MaximumHeightRequest="250"
-                    MaximumWidthRequest="250"
-                    MinimumHeightRequest="150"
-                    MinimumWidthRequest="150"
-                    Source="bit_buggy_image.png"
-                    WidthRequest="250"
-                    />
+            <!--  Hero  -->
+            <StackLayout
+                Background="{StaticResource BitGreenLight}"
+                HeightRequest="300"
+                Orientation="Vertical">
 
+                <!--  BitBuggy Logo  -->
+                <Image
+                    Margin="15"
+                    Aspect="AspectFit"
+                    HeightRequest="200"
+                    Source="bit_buggy_image.png" />
 
-
-            <Label
+                <!--  Label for the Shipment Tracking Interface  -->
+                <Label
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     Text="Shipment Tracking Interface"
                     TextColor="{StaticResource BitGoldLight}"
                     VerticalOptions="End" />
+            </StackLayout>
 
+            <!--  Borders with green background  -->
+            <FlexLayout JustifyContent="SpaceBetween" Wrap="Wrap">
+                <!--  Left border  -->
 
-
-
-        </StackLayout>
-
-
-
-
-
-        <!--  Borders with green background  -->
-
-            <StackLayout Orientation="Horizontal" >
-   
-               
-
-        
-        <!--  Left border  -->
-
-                <Frame BackgroundColor="{StaticResource BitGreenLight}">
+                
+                
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 40%, Android=100%, iOS=100%}">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
-                        
-                        <StackLayout.BindingContext>
-                            <viewmodels:ShipmentStatusViewModel/>
-                        </StackLayout.BindingContext>
-                        
                         <HorizontalStackLayout HorizontalOptions="Start">
-
-                            <VerticalStackLayout Margin="0,10,0,0" VerticalOptions="Start">
-
+                            <VerticalStackLayout Margin="10" VerticalOptions="Start">
                                 <Label
-                                    Margin="0,10,0,0"
+                                    Margin="10"
                                     FontSize="Title"
                                     HorizontalOptions="Center"
                                     Text="Item # And Name"
@@ -88,23 +70,19 @@
                                     BackgroundColor="{StaticResource BitGreenDark}"
                                     BorderColor="{StaticResource BitGoldLight}"
                                     BorderWidth="2"
-                                    HeightRequest="300"
                                     HorizontalOptions="Start"
-                                    MaximumHeightRequest="300"
-                                    MaximumWidthRequest="200"
-                                    MinimumHeightRequest="150"
-                                    MinimumWidthRequest="100"
                                     Source="productimagehuge.png"
-                                    VerticalOptions="Center"
-                                    WidthRequest="200" />
-
+                                    VerticalOptions="Center" />
 
                             </VerticalStackLayout>
 
 
-                            <StackLayout Orientation="Vertical" Margin="0,100,0,0" VerticalOptions="Start">
+                            <StackLayout
+                                Margin="0,100,0,0"
+                                Orientation="Vertical"
+                                VerticalOptions="Start">
 
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
 
                                     <Button
                                         Margin="0,0,0,10"
@@ -113,6 +91,7 @@
                                         BorderWidth="1"
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center" />
+
                                     <Label
                                         Margin="10,0,0,0"
                                         FontAttributes="Bold"
@@ -121,7 +100,7 @@
 
                                 </StackLayout>
 
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
 
                                     <Button
                                         Margin="0,0,0,10"
@@ -143,7 +122,7 @@
 
                                 </StackLayout>
 
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
 
                                     <Button
                                         Margin="0,0,0,10"
@@ -161,7 +140,7 @@
 
                                 </StackLayout>
 
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
 
                                     <Button
                                         Margin="0,0,0,10"
@@ -185,34 +164,21 @@
 
                         </HorizontalStackLayout>
 
+                        <!--  Your content here  -->
 
-
-
-
-
-
-
-
-        
-        <!--  Your content here  -->
-        
                     </StackLayout>
                 </Frame>
 
 
-
-
-
-        
-        <!--  Right border  -->
-
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" WidthRequest="1097">
-                    <FlexLayout Direction="Column" FlowDirection="LeftToRight" AlignContent="Stretch" BackgroundColor="{StaticResource BitGreenDark}">
+                <!--  Right border  -->
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="50%">
+                    <FlexLayout
+                        AlignContent="Stretch"
+                        BackgroundColor="{StaticResource BitGreenDark}"
+                        Direction="Column"
+                        FlowDirection="LeftToRight">
 
                         <StackLayout Orientation="Vertical">
-                            <StackLayout.BindingContext>
-                                <viewmodels:ShipmentListViewModel/>
-                            </StackLayout.BindingContext>
 
                             <Label
                                 FontSize="Title"
@@ -220,10 +186,15 @@
                                 Text="{Binding CustomerName}"
                                 TextColor="{StaticResource BitGoldLight}" />
 
-                            <Line BackgroundColor="{StaticResource BitGoldLight}" StrokeLineCap="Flat" IsVisible="true" StrokeThickness="3" WidthRequest="3"/>
-        
+                            <Line
+                                BackgroundColor="{StaticResource BitGoldLight}"
+                                IsVisible="true"
+                                StrokeLineCap="Flat"
+                                StrokeThickness="3"
+                                WidthRequest="3" />
 
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
 
                                 <ImageButton
                                     Margin="0,100,40,0"
@@ -249,7 +220,7 @@
 
                             </StackLayout>
 
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
 
                                 <ImageButton
                                     Margin="0,10,40,0"
@@ -257,10 +228,6 @@
                                     BorderColor="{StaticResource BitGoldLight}"
                                     BorderWidth="2"
                                     HorizontalOptions="Center"
-                                    MaximumHeightRequest="90"
-                                    MaximumWidthRequest="90"
-                                    MinimumHeightRequest="90"
-                                    MinimumWidthRequest="90"
                                     Source="{Binding ItemImage2}"
                                     VerticalOptions="Start" />
                                 <Label
@@ -278,12 +245,12 @@
 
                         </StackLayout>
 
-        
-        <!--  Your content here  -->
-        
+
+                        <!--  Your content here  -->
+
                     </FlexLayout>
                 </Frame>
-            </StackLayout>
+            </FlexLayout>
 
         </StackLayout>
     </ScrollView>
