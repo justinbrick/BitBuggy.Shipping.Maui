@@ -50,11 +50,11 @@
 
             <!--  Borders with green background  -->
 
-            <FlexLayout JustifyContent="SpaceBetween"   Wrap="Wrap" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
+            <FlexLayout JustifyContent="SpaceBetween"   Wrap="{OnPlatform Wrap,Android=Reverse, iOS=Reverse}"  VerticalOptions="FillAndExpand" >
                     <!--  Left border  -->
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 40%, Android=100%, iOS=100%}">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 47%, Android=100%, iOS=100%}">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
                         <HorizontalStackLayout HorizontalOptions="Start">
                             <VerticalStackLayout Margin="10" VerticalOptions="Start">
@@ -79,10 +79,10 @@
 
                                 <StackLayout
                                 Margin="0,100,0,0"
-                                Orientation="Vertical"
+                                Orientation="Horizontal"
                                 VerticalOptions="Start">
 
-                                    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    
 
                                         <Button
                                         Margin="0,0,0,10"
@@ -92,15 +92,9 @@
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center" />
 
-                                        <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is being Processed"
-                                        TextColor="{StaticResource BitGoldLight}" />
+                                        
 
-                                    </StackLayout>
-
-                                    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                    
 
                                         <Button
                                         Margin="0,0,0,10"
@@ -109,20 +103,9 @@
                                         BorderWidth="1"
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center" />
-                                        <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is being SHipped to our Warehouse in "
-                                        TextColor="{StaticResource BitGoldLight}" />
-                                        <Label
-                                        Margin="5,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="North Carolina"
-                                        TextColor="{StaticResource BitGoldLight}" />
+                                      
 
-                                    </StackLayout>
-
-                                    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                   
 
                                         <Button
                                         Margin="0,0,0,10"
@@ -131,16 +114,9 @@
                                         BorderWidth="1"
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center" />
-                                        <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is out for Delivery"
-                                        TextColor="{StaticResource BitGoldLight}" />
+                                     
 
-
-                                    </StackLayout>
-
-                                    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                                   
 
                                         <Button
                                         Margin="0,0,0,10"
@@ -149,13 +125,7 @@
                                         BorderWidth="1"
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center" />
-                                        <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is Deliverered"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-                                    </StackLayout>
+                                       
 
 
 
