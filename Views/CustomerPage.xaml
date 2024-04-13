@@ -49,11 +49,13 @@
             </StackLayout>
 
             <!--  Borders with green background  -->
-            <FlexLayout JustifyContent="SpaceBetween" Wrap="Wrap">
+            <FlexLayout
+                JustifyContent="SpaceBetween"
+                VerticalOptions="FillAndExpand"
+                Wrap="Wrap">
                 <!--  Left border  -->
 
-                
-                
+                <!--  Status Frame  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 40%, Android=100%, iOS=100%}">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
                         <HorizontalStackLayout HorizontalOptions="Start">
@@ -171,7 +173,7 @@
 
 
                 <!--  Right border  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="50%">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 50%, Android=100%, iOS=100%}">
                     <FlexLayout
                         AlignContent="Stretch"
                         BackgroundColor="{StaticResource BitGreenDark}"
