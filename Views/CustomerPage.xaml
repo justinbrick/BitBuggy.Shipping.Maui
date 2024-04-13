@@ -14,8 +14,14 @@
                 <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
                 <Setter Property="CornerRadius" Value="10" />
                 <Setter Property="BackgroundColor" Value="{StaticResource BitGreenDark}" />
-                <Setter Property="WidthRequest" Value="500" />
 
+            </Style>
+
+            <Style x:Key="StatusStyle" TargetType="Button">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Background" Value="{StaticResource BitGreenDark}" />
+                <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
+                <Setter Property="BorderWidth" Value="1" />
             </Style>
             <viewmodels:ShipmentStatusViewModel x:Key="CurrentStatusModel" x:Name="CurrentStatus" />
         </ResourceDictionary>
@@ -50,94 +56,56 @@
 
             <!--  Borders with green background  -->
 
-            <FlexLayout JustifyContent="SpaceBetween"   Wrap="{OnPlatform Wrap,Android=Reverse, iOS=Reverse}"  VerticalOptions="FillAndExpand" >
-                    <!--  Left border  -->
+            <FlexLayout
+                JustifyContent="SpaceBetween"
+                VerticalOptions="FillAndExpand"
+                Wrap="{OnPlatform Wrap,
+                                  Android=Reverse,
+                                  iOS=Reverse}">
+                <!--  Left border  -->
 
                 <!--  Status Frame  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 47%, Android=100%, iOS=100%}">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
-                        <HorizontalStackLayout HorizontalOptions="Start">
-                            <VerticalStackLayout Margin="10" VerticalOptions="Start">
-                                <Label
-                                    Margin="10"
-                                    FontSize="Title"
-                                    HorizontalOptions="Center"
-                                    Text="Item # And Name"
-                                    TextColor="{StaticResource BitGoldLight}" />
+                        <!--  Top to Bottom Status  -->
+                        <VerticalStackLayout Margin="10" VerticalOptions="Start">
+                            <Label
+                                Margin="10"
+                                FontSize="Title"
+                                HorizontalOptions="Center"
+                                Text="Item # And Name"
+                                TextColor="{StaticResource BitGoldLight}" />
 
-                                    <ImageButton
-                                    Margin="40"
-                                    BackgroundColor="{StaticResource BitGreenDark}"
-                                    BorderColor="{StaticResource BitGoldLight}"
-                                    BorderWidth="2"
-                                    HorizontalOptions="Start"
-                                    Source="productimagehuge.png"
-                                    VerticalOptions="Center" />
+                            <ImageButton
+                                Margin="40"
+                                Aspect="AspectFit"
+                                BackgroundColor="{StaticResource BitGreenDark}"
+                                BorderColor="{StaticResource BitGoldLight}"
+                                BorderWidth="2"
+                                HorizontalOptions="Center"
+                                Source="productimagehuge.png"
+                                VerticalOptions="Center" />
 
-                                </VerticalStackLayout>
-
-
-                                <StackLayout
+                            <!--  Status Buttons  -->
+                            <StackLayout
                                 Margin="0,100,0,0"
+                                HorizontalOptions="Center"
                                 Orientation="Horizontal"
                                 VerticalOptions="Start">
 
-                                    
-
-                                        <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-
-                                        
-
-                                    
-
-                                        <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                      
-
-                                   
-
-                                        <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                     
-
-                                   
-
-                                        <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                       
+                                <!--  Center for both  -->
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                            </StackLayout>
+                        </VerticalStackLayout>
 
 
+                        <!--  Your content here  -->
 
-
-                                </StackLayout>
-
-                            </HorizontalStackLayout>
-
-                            <!--  Your content here  -->
-
-                        </StackLayout>
-                    </Frame>
+                    </StackLayout>
+                </Frame>
 
 
                 <!--  Right border  -->
@@ -148,15 +116,15 @@
                         Direction="Column"
                         FlowDirection="LeftToRight">
 
-                            <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Vertical">
 
-                                <Label
+                            <Label
                                 FontSize="Title"
                                 HorizontalTextAlignment="Center"
                                 Text="{Binding CustomerName}"
                                 TextColor="{StaticResource BitGoldLight}" />
 
-                                <Line
+                            <Line
                                 BackgroundColor="{StaticResource BitGoldLight}"
                                 IsVisible="true"
                                 StrokeLineCap="Flat"
@@ -164,9 +132,9 @@
                                 WidthRequest="3" />
 
 
-                                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
 
-                                    <ImageButton
+                                <ImageButton
                                     Margin="0,100,40,0"
                                     BackgroundColor="{StaticResource BitGreenDark}"
                                     BorderColor="{StaticResource BitGoldLight}"
@@ -178,7 +146,7 @@
                                     MinimumWidthRequest="90"
                                     Source="{Binding ItemImage1}"
                                     VerticalOptions="Start" />
-                                    <Label
+                                <Label
                                     Margin="0,100,400,0"
                                     FontSize="Medium"
                                     HorizontalOptions="Start"
@@ -188,11 +156,11 @@
 
 
 
-                                </StackLayout>
+                            </StackLayout>
 
-                                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
 
-                                    <ImageButton
+                                <ImageButton
                                     Margin="0,10,40,0"
                                     BackgroundColor="{StaticResource BitGreenDark}"
                                     BorderColor="{StaticResource BitGoldLight}"
@@ -200,7 +168,7 @@
                                     HorizontalOptions="Center"
                                     Source="{Binding ItemImage2}"
                                     VerticalOptions="Start" />
-                                    <Label
+                                <Label
                                     Margin="0,10,400,0"
                                     FontSize="Medium"
                                     HorizontalOptions="Start"
@@ -210,18 +178,18 @@
 
 
 
-                                </StackLayout>
-
-
                             </StackLayout>
 
 
-                            <!--  Your content here  -->
+                        </StackLayout>
 
-                        </FlexLayout>
-                    </Frame>
-                </FlexLayout>
-           
+
+                        <!--  Your content here  -->
+
+                    </FlexLayout>
+                </Frame>
+            </FlexLayout>
+
 
         </StackLayout>
     </ScrollView>
