@@ -53,13 +53,12 @@
             <FlexLayout JustifyContent="SpaceBetween"   Wrap="Wrap" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                     <!--  Left border  -->
 
-
-
-                    <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 40%, Android=100%, iOS=100%}">
-                        <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
-                            <HorizontalStackLayout HorizontalOptions="Start">
-                                <VerticalStackLayout Margin="10" VerticalOptions="Start">
-                                    <Label
+                <!--  Status Frame  -->
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 40%, Android=100%, iOS=100%}">
+                    <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
+                        <HorizontalStackLayout HorizontalOptions="Start">
+                            <VerticalStackLayout Margin="10" VerticalOptions="Start">
+                                <Label
                                     Margin="10"
                                     FontSize="Title"
                                     HorizontalOptions="Center"
@@ -171,10 +170,9 @@
                     </Frame>
 
 
-
-                    <!--  Right border  -->
-                    <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="50%">
-                        <FlexLayout
+                <!--  Right border  -->
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 50%, Android=100%, iOS=100%}">
+                    <FlexLayout
                         AlignContent="Stretch"
                         BackgroundColor="{StaticResource BitGreenDark}"
                         Direction="Column"
