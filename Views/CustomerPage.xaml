@@ -29,8 +29,7 @@
 
     <ScrollView Background="{StaticResource BitGreenLight}" VerticalOptions="FillAndExpand">
 
-        <StackLayout HeightRequest="1500">
-
+        <StackLayout VerticalOptions="FillAndExpand">
             <!--  Hero  -->
             <StackLayout
                 Background="{StaticResource BitGreenLight}"
@@ -50,21 +49,14 @@
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     Text="Shipment Tracking Interface"
-                    TextColor="{StaticResource BitGoldLight}"
-                    VerticalOptions="End" />
+                    TextColor="{StaticResource BitGoldLight}" />
             </StackLayout>
 
-            <!--  Borders with green background  -->
 
-            <FlexLayout
-                JustifyContent="SpaceBetween"
-                VerticalOptions="FillAndExpand"
-                Wrap="{OnPlatform Wrap,
-                                  Android=Reverse,
-                                  iOS=Reverse}">
+            <FlexLayout Direction="{OnPlatform Row, Android=Column, iOS=Column}">
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 47%, Android=100%, iOS=100%}">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.45">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
@@ -87,7 +79,6 @@
 
                             <!--  Status Buttons  -->
                             <StackLayout
-                                Margin="0,100,0,0"
                                 HorizontalOptions="Center"
                                 Orientation="Horizontal"
                                 VerticalOptions="Start">
@@ -108,7 +99,7 @@
 
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Basis="{OnPlatform 47%, Android=100%, iOS=100%}">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.55">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
