@@ -4,15 +4,20 @@ namespace BitBuggy.Shipping.Maui.Views;
 
 public partial class AccountPage : ContentPage
 {
-    
-    public AccountViewModel AccountViewModel { get; }
+
+    private readonly AccountViewModel _account;
 
 
-	public AccountPage(AccountViewModel accountViewModel)
+	public AccountPage(AccountViewModel account)
 	{
-		AccountViewModel = accountViewModel;
-		BindingContext = AccountViewModel;
+		_account = account;
+		BindingContext = _account;
 		InitializeComponent();
-	}	
+	}
+
+    private async void OnAppearing(object sender, EventArgs e)
+    {
+        await _account.LoginSilentAsync();
+    }
 	
 }

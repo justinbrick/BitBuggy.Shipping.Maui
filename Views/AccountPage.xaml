@@ -1,38 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:model="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
-             x:Class="BitBuggy.Shipping.Maui.Views.AccountPage"
-             x:DataType="model:AccountViewModel"
-             Title="Account">
+<ContentPage
+    x:Class="BitBuggy.Shipping.Maui.Views.AccountPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
+    Title="Account"
+    x:DataType="model:AccountViewModel"
+    Appearing="OnAppearing">
+
 
     <VerticalStackLayout>
-        <Label HorizontalOptions="Center" IsVisible="{Binding SignedIn}" Margin="30">
+        <Label
+            Margin="30"
+            HorizontalOptions="Center"
+            IsVisible="{Binding SignedIn}">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Hello, "/>
-                    <Span Text="{Binding Account.Username}"/>
-                    <Span Text="!"/>
+                    <Span Text="Hello, " />
+                    <Span Text="{Binding FirstName}" />
+                    <Span Text="!" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
 
-        <StackLayout Orientation="Vertical" Margin="30" HorizontalOptions="Center" IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}">
-            <Label 
+        <StackLayout
+            Margin="30"
+            HorizontalOptions="Center"
+            IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}"
+            Orientation="Vertical">
+            <Label
+                HorizontalOptions="Center"
                 Style="{StaticResource Headline}"
-                Text="You are not signed in."
-                HorizontalOptions="Center"/>
+                Text="You are not signed in." />
 
-            <Label 
+            <Label
+                HorizontalOptions="Center"
                 Style="{StaticResource SubHeadline}"
-                Text="Please sign in to continue."
-                HorizontalOptions="Center"/>
+                Text="Please sign in to continue." />
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="15">
-            <Button Text="Sign In" Command="{Binding SignInCommand}" IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}"/>
-            <Button Text="Sign Out" Command="{Binding SignOutCommand}" IsVisible="{Binding SignedIn}"/>
+        <StackLayout
+            Padding="15"
+            HorizontalOptions="Center"
+            Orientation="Horizontal">
+            <Button
+                Command="{Binding SignInCommand}"
+                IsVisible="{Binding SignedIn, Converter={StaticResource InvertedBoolConverter}}"
+                Text="Sign In" />
+            <Button
+                Command="{Binding SignOutCommand}"
+                IsVisible="{Binding SignedIn}"
+                Text="Sign Out" />
         </StackLayout>
-        
+
     </VerticalStackLayout>
 </ContentPage>

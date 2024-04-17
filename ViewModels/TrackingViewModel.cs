@@ -23,6 +23,21 @@ public class TrackingViewModel : INotifyPropertyChanged
 
     private readonly ShippingService _shipping;
     private ObservableCollection<Shipping.Model.Delivery> _deliveryList = [];
+    private ShipmentStatus? _status;
+
+    public ShipmentStatus? Status
+    {
+        get => _status;
+        set
+        {
+            if (_status != value)
+            {
+                _status = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
     public ObservableCollection<Shipping.Model.Delivery> DeliveryList
     {
         get => _deliveryList;
@@ -35,6 +50,7 @@ public class TrackingViewModel : INotifyPropertyChanged
             }
         }
     }
+
 
 
     public TrackingViewModel(ShippingService shipping)
@@ -62,11 +78,11 @@ public class TrackingViewModel : INotifyPropertyChanged
 
     public async Task RetrieveDeliveriesAsync()
     {
-        MeApi? me = await _shipping.GetMeAsync();
-        if (me is null)
-        {
-            return;
-        }
+        //MeApi? me = await _shipping.GetMeAsync();
+        //if (me is null)
+        //{
+        //    return;
+        //}
 
         // await me.GetPersonalDeliveriesAsync();
         List<Delivery> deliveryList = [
