@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BitBuggy.Shipping.Maui.Views.EmployeeView">
+<ContentPage
+    x:Class="BitBuggy.Shipping.Maui.Views.EmployeeView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
+    x:DataType="viewmodels:EmployeeSearchViewModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="FrameStyle" TargetType="Frame">
@@ -17,7 +20,7 @@
                 <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
                 <Setter Property="BorderWidth" Value="1" />
             </Style>
-            
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -26,25 +29,25 @@
         <StackLayout VerticalOptions="FillAndExpand">
             <!--  Hero  -->
             <StackLayout
-            Background="{StaticResource BitGreenLight}"
-            HeightRequest="300"
-            Orientation="Vertical">
+                Background="{StaticResource BitGreenLight}"
+                HeightRequest="300"
+                Orientation="Vertical">
 
                 <StackLayout Orientation="Horizontal">
 
 
                     <!--  BitBuggy Logo  -->
                     <Image
-                Margin="100, 80, 100, 0"
-                Aspect="AspectFit"
-                HorizontalOptions="Start"
-                VerticalOptions="End"
-                HeightRequest="150"
-                Source="bit_buggy_image.png" />
+                        Margin="100,80,100,0"
+                        Aspect="AspectFit"
+                        HeightRequest="150"
+                        HorizontalOptions="Start"
+                        Source="bit_buggy_image.png"
+                        VerticalOptions="End" />
 
 
                     <Label
-                         Margin="280, 100, 10, 0"
+                        Margin="280,100,10,0"
                         FontAttributes="Bold"
                         FontSize="Medium"
                         HorizontalOptions="Center"
@@ -54,27 +57,10 @@
 
 
                     <Picker
-                        WidthRequest="300"
                         BackgroundColor="White"
-                        VerticalOptions="CenterAndExpand">
-
-                        <Picker.Items>
-                            <x:String>Not Selected</x:String>
-                            <x:String>Shipped to WareHouse A</x:String>
-                            <x:String>Shipped to WareHouse B</x:String>
-                            <x:String>Shipped to WareHouse C</x:String>
-                            <x:String>Shipped to WareHouse D</x:String>
-                            <x:String>Shipped to user</x:String>
-                            <x:String>arrived at users address</x:String>
-                            <x:String>In WareHouse A</x:String>
-                            <x:String>In WareHouse B</x:String>
-                            <x:String>In WareHouse C</x:String>
-                            <x:String>In WareHouse D</x:String>
-                            <x:String></x:String>
-                        </Picker.Items>
-
-
-                    </Picker>
+                        ItemsSource="{Static viewmodels:EmployeeSearchViewModel.StatusChoices}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="300" />
 
                 </StackLayout>
 
@@ -82,17 +68,22 @@
 
                 <!--  Label for the Shipment Tracking Interface  -->
                 <Label
-                FontAttributes="Bold"
-                FontSize="Medium"
-                HorizontalOptions="Center"
-                Text="Selected Name and UID"
-                TextColor="{StaticResource BitGoldLight}" />
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="Selected Name and UID"
+                    TextColor="{StaticResource BitGoldLight}" />
             </StackLayout>
 
 
-            <FlexLayout Direction="{OnPlatform Row, Android=Column, iOS=Column}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <FlexLayout
+                Direction="{OnPlatform Row,
+                                       Android=Column,
+                                       iOS=Column}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
 
-                
+
 
                 <!--  Status Frame  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow=".55">
@@ -100,27 +91,27 @@
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
                             <Label
-                            Margin="10"
-                            FontSize="Title"
-                            HorizontalOptions="Center"
-                            Text="Item # And Name"
-                            TextColor="{StaticResource BitGoldLight}" />
+                                Margin="10"
+                                FontSize="Title"
+                                HorizontalOptions="Center"
+                                Text="Item # And Name"
+                                TextColor="{StaticResource BitGoldLight}" />
 
                             <ImageButton
-                            Margin="40"
-                            Aspect="AspectFit"
-                            BackgroundColor="{StaticResource BitGreenDark}"
-                            BorderColor="{StaticResource BitGoldLight}"
-                            BorderWidth="2"
-                            HorizontalOptions="Center"
-                            Source="productimagehuge.png"
-                            VerticalOptions="Center" />
+                                Margin="40"
+                                Aspect="AspectFit"
+                                BackgroundColor="{StaticResource BitGreenDark}"
+                                BorderColor="{StaticResource BitGoldLight}"
+                                BorderWidth="2"
+                                HorizontalOptions="Center"
+                                Source="productimagehuge.png"
+                                VerticalOptions="Center" />
 
                             <!--  Status Buttons  -->
                             <StackLayout
-                            HorizontalOptions="Center"
-                            Orientation="Horizontal"
-                            VerticalOptions="Start">
+                                HorizontalOptions="Center"
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
 
                                 <!--  Center for both  -->
                                 <Button Style="{StaticResource StatusStyle}" />

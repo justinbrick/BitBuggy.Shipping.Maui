@@ -58,7 +58,8 @@ public static class MauiProgram
         // Viewmodels
         builder.Services
             .AddTransient<AccountViewModel>()
-            .AddTransient<TrackingViewModel>();
+            .AddTransient<TrackingViewModel>()
+            .AddTransient<EmployeeSearchViewModel>();
 
         // Pages
         builder.Services
