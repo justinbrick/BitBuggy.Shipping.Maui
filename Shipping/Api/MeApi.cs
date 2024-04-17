@@ -23,165 +23,161 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IShipmentsApiSync : IApiAccessor
+    public interface IMeApiSync : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get Shipment
+        /// Get My Deliveries
         /// </summary>
         /// <remarks>
-        /// Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get all the deliveries related to this user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Shipment</returns>
-        Shipment GetShipmentShipmentsShipmentIdGet(Guid shipmentId, int operationIndex = 0);
+        /// <returns>List&lt;Delivery&gt;</returns>
+        List<Delivery> GetPersonalDeliveries(int operationIndex = 0);
 
         /// <summary>
-        /// Get Shipment
+        /// Get My Deliveries
         /// </summary>
         /// <remarks>
-        /// Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get all the deliveries related to this user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Shipment</returns>
-        ApiResponse<Shipment> GetShipmentShipmentsShipmentIdGetWithHttpInfo(Guid shipmentId, int operationIndex = 0);
+        /// <returns>ApiResponse of List&lt;Delivery&gt;</returns>
+        ApiResponse<List<Delivery>> GetPersonalDeliveriesWithHttpInfo(int operationIndex = 0);
         /// <summary>
-        /// Get Shipment Status
+        /// Get My Shipment Status
         /// </summary>
         /// <remarks>
-        /// Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get the status of a shipment for the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ShipmentStatus</returns>
-        ShipmentStatus GetShipmentStatusShipmentsShipmentIdStatusGet(Guid shipmentId, int operationIndex = 0);
+        ShipmentStatus GetPersonalShipmentStatus(Guid shipmentId, int operationIndex = 0);
 
         /// <summary>
-        /// Get Shipment Status
+        /// Get My Shipment Status
         /// </summary>
         /// <remarks>
-        /// Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get the status of a shipment for the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ShipmentStatus</returns>
-        ApiResponse<ShipmentStatus> GetShipmentStatusShipmentsShipmentIdStatusGetWithHttpInfo(Guid shipmentId, int operationIndex = 0);
+        ApiResponse<ShipmentStatus> GetPersonalShipmentStatusWithHttpInfo(Guid shipmentId, int operationIndex = 0);
         /// <summary>
-        /// Get Shipments
+        /// Get My Shipments
         /// </summary>
         /// <remarks>
-        /// Get all the shipments related to this user.  :return: a list of shipments
+        /// Get all the shipments related to the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Shipment&gt;</returns>
-        List<Shipment> GetShipmentsShipmentsGet(int operationIndex = 0);
+        List<Shipment> GetPersonalShipments(int operationIndex = 0);
 
         /// <summary>
-        /// Get Shipments
+        /// Get My Shipments
         /// </summary>
         /// <remarks>
-        /// Get all the shipments related to this user.  :return: a list of shipments
+        /// Get all the shipments related to the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Shipment&gt;</returns>
-        ApiResponse<List<Shipment>> GetShipmentsShipmentsGetWithHttpInfo(int operationIndex = 0);
+        ApiResponse<List<Shipment>> GetPersonalShipmentsWithHttpInfo(int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IShipmentsApiAsync : IApiAccessor
+    public interface IMeApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Get Shipment
+        /// Get My Deliveries
         /// </summary>
         /// <remarks>
-        /// Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get all the deliveries related to this user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Shipment</returns>
-        System.Threading.Tasks.Task<Shipment> GetShipmentShipmentsShipmentIdGetAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of List&lt;Delivery&gt;</returns>
+        System.Threading.Tasks.Task<List<Delivery>> GetPersonalDeliveriesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Shipment
+        /// Get My Deliveries
         /// </summary>
         /// <remarks>
-        /// Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get all the deliveries related to this user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Shipment)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Shipment>> GetShipmentShipmentsShipmentIdGetWithHttpInfoAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (List&lt;Delivery&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Delivery>>> GetPersonalDeliveriesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get Shipment Status
+        /// Get My Shipment Status
         /// </summary>
         /// <remarks>
-        /// Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get the status of a shipment for the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ShipmentStatus</returns>
-        System.Threading.Tasks.Task<ShipmentStatus> GetShipmentStatusShipmentsShipmentIdStatusGetAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ShipmentStatus> GetPersonalShipmentStatusAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Shipment Status
+        /// Get My Shipment Status
         /// </summary>
         /// <remarks>
-        /// Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get the status of a shipment for the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ShipmentStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShipmentStatus>> GetShipmentStatusShipmentsShipmentIdStatusGetWithHttpInfoAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ShipmentStatus>> GetPersonalShipmentStatusWithHttpInfoAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get Shipments
+        /// Get My Shipments
         /// </summary>
         /// <remarks>
-        /// Get all the shipments related to this user.  :return: a list of shipments
+        /// Get all the shipments related to the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Shipment&gt;</returns>
-        System.Threading.Tasks.Task<List<Shipment>> GetShipmentsShipmentsGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<Shipment>> GetPersonalShipmentsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Shipments
+        /// Get My Shipments
         /// </summary>
         /// <remarks>
-        /// Get all the shipments related to this user.  :return: a list of shipments
+        /// Get all the shipments related to the currently logged in user.
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Shipment&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Shipment>>> GetShipmentsShipmentsGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<Shipment>>> GetPersonalShipmentsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IShipmentsApi : IShipmentsApiSync, IShipmentsApiAsync
+    public interface IMeApi : IMeApiSync, IMeApiAsync
     {
 
     }
@@ -189,23 +185,23 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class ShipmentsApi : IShipmentsApi
+    public partial class MeApi : IMeApi
     {
         private BitBuggy.Shipping.Maui.Shipping.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShipmentsApi"/> class.
+        /// Initializes a new instance of the <see cref="MeApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public ShipmentsApi() : this((string)null)
+        public MeApi() : this((string)null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShipmentsApi"/> class.
+        /// Initializes a new instance of the <see cref="MeApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public ShipmentsApi(string basePath)
+        public MeApi(string basePath)
         {
             this.Configuration = BitBuggy.Shipping.Maui.Shipping.Client.Configuration.MergeConfigurations(
                 BitBuggy.Shipping.Maui.Shipping.Client.GlobalConfiguration.Instance,
@@ -217,12 +213,12 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShipmentsApi"/> class
+        /// Initializes a new instance of the <see cref="MeApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public ShipmentsApi(BitBuggy.Shipping.Maui.Shipping.Client.Configuration configuration)
+        public MeApi(BitBuggy.Shipping.Maui.Shipping.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -236,13 +232,13 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShipmentsApi"/> class
+        /// Initializes a new instance of the <see cref="MeApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public ShipmentsApi(BitBuggy.Shipping.Maui.Shipping.Client.ISynchronousClient client, BitBuggy.Shipping.Maui.Shipping.Client.IAsynchronousClient asyncClient, BitBuggy.Shipping.Maui.Shipping.Client.IReadableConfiguration configuration)
+        public MeApi(BitBuggy.Shipping.Maui.Shipping.Client.ISynchronousClient client, BitBuggy.Shipping.Maui.Shipping.Client.IAsynchronousClient asyncClient, BitBuggy.Shipping.Maui.Shipping.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -296,26 +292,24 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Shipment Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get My Deliveries Get all the deliveries related to this user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Shipment</returns>
-        public Shipment GetShipmentShipmentsShipmentIdGet(Guid shipmentId, int operationIndex = 0)
+        /// <returns>List&lt;Delivery&gt;</returns>
+        public List<Delivery> GetPersonalDeliveries(int operationIndex = 0)
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<Shipment> localVarResponse = GetShipmentShipmentsShipmentIdGetWithHttpInfo(shipmentId);
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Delivery>> localVarResponse = GetPersonalDeliveriesWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Shipment Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get My Deliveries Get all the deliveries related to this user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Shipment</returns>
-        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<Shipment> GetShipmentShipmentsShipmentIdGetWithHttpInfo(Guid shipmentId, int operationIndex = 0)
+        /// <returns>ApiResponse of List&lt;Delivery&gt;</returns>
+        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Delivery>> GetPersonalDeliveriesWithHttpInfo(int operationIndex = 0)
         {
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
 
@@ -339,17 +333,16 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("shipment_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
 
-            localVarRequestOptions.Operation = "ShipmentsApi.GetShipmentShipmentsShipmentIdGet";
+            localVarRequestOptions.Operation = "MeApi.GetPersonalDeliveries";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Shipment>("/shipments/{shipment_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<List<Delivery>>("/me/deliveries", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetShipmentShipmentsShipmentIdGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPersonalDeliveries", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -360,28 +353,26 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Shipment Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get My Deliveries Get all the deliveries related to this user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Shipment</returns>
-        public async System.Threading.Tasks.Task<Shipment> GetShipmentShipmentsShipmentIdGetAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of List&lt;Delivery&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Delivery>> GetPersonalDeliveriesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<Shipment> localVarResponse = await GetShipmentShipmentsShipmentIdGetWithHttpInfoAsync(shipmentId, operationIndex, cancellationToken).ConfigureAwait(false);
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Delivery>> localVarResponse = await GetPersonalDeliveriesWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Shipment Get the shipment using a specific shipment ID.  :param shipment_id: the ID of the shipment to get :return: the shipment
+        /// Get My Deliveries Get all the deliveries related to this user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Shipment)</returns>
-        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<Shipment>> GetShipmentShipmentsShipmentIdGetWithHttpInfoAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (List&lt;Delivery&gt;)</returns>
+        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Delivery>>> GetPersonalDeliveriesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
@@ -406,18 +397,17 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("shipment_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
 
-            localVarRequestOptions.Operation = "ShipmentsApi.GetShipmentShipmentsShipmentIdGet";
+            localVarRequestOptions.Operation = "MeApi.GetPersonalDeliveries";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Shipment>("/shipments/{shipment_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Delivery>>("/me/deliveries", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetShipmentShipmentsShipmentIdGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPersonalDeliveries", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -428,26 +418,26 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Shipment Status Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get My Shipment Status Get the status of a shipment for the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ShipmentStatus</returns>
-        public ShipmentStatus GetShipmentStatusShipmentsShipmentIdStatusGet(Guid shipmentId, int operationIndex = 0)
+        public ShipmentStatus GetPersonalShipmentStatus(Guid shipmentId, int operationIndex = 0)
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> localVarResponse = GetShipmentStatusShipmentsShipmentIdStatusGetWithHttpInfo(shipmentId);
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> localVarResponse = GetPersonalShipmentStatusWithHttpInfo(shipmentId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Shipment Status Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get My Shipment Status Get the status of a shipment for the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ShipmentStatus</returns>
-        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> GetShipmentStatusShipmentsShipmentIdStatusGetWithHttpInfo(Guid shipmentId, int operationIndex = 0)
+        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> GetPersonalShipmentStatusWithHttpInfo(Guid shipmentId, int operationIndex = 0)
         {
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
 
@@ -473,15 +463,15 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
 
             localVarRequestOptions.PathParameters.Add("shipment_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
 
-            localVarRequestOptions.Operation = "ShipmentsApi.GetShipmentStatusShipmentsShipmentIdStatusGet";
+            localVarRequestOptions.Operation = "MeApi.GetPersonalShipmentStatus";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ShipmentStatus>("/shipments/{shipment_id}/status", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ShipmentStatus>("/me/shipments/{shipment_id}/status", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetShipmentStatusShipmentsShipmentIdStatusGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPersonalShipmentStatus", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -492,28 +482,28 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Shipment Status Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get My Shipment Status Get the status of a shipment for the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ShipmentStatus</returns>
-        public async System.Threading.Tasks.Task<ShipmentStatus> GetShipmentStatusShipmentsShipmentIdStatusGetAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ShipmentStatus> GetPersonalShipmentStatusAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> localVarResponse = await GetShipmentStatusShipmentsShipmentIdStatusGetWithHttpInfoAsync(shipmentId, operationIndex, cancellationToken).ConfigureAwait(false);
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> localVarResponse = await GetPersonalShipmentStatusWithHttpInfoAsync(shipmentId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Shipment Status Get the current status of a shipment. Queries third parties - expect failures.
+        /// Get My Shipment Status Get the status of a shipment for the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="shipmentId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ShipmentStatus)</returns>
-        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus>> GetShipmentStatusShipmentsShipmentIdStatusGetWithHttpInfoAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus>> GetPersonalShipmentStatusWithHttpInfoAsync(Guid shipmentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
@@ -540,16 +530,16 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
 
             localVarRequestOptions.PathParameters.Add("shipment_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
 
-            localVarRequestOptions.Operation = "ShipmentsApi.GetShipmentStatusShipmentsShipmentIdStatusGet";
+            localVarRequestOptions.Operation = "MeApi.GetPersonalShipmentStatus";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ShipmentStatus>("/shipments/{shipment_id}/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ShipmentStatus>("/me/shipments/{shipment_id}/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetShipmentStatusShipmentsShipmentIdStatusGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPersonalShipmentStatus", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -560,24 +550,24 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Shipments Get all the shipments related to this user.  :return: a list of shipments
+        /// Get My Shipments Get all the shipments related to the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Shipment&gt;</returns>
-        public List<Shipment> GetShipmentsShipmentsGet(int operationIndex = 0)
+        public List<Shipment> GetPersonalShipments(int operationIndex = 0)
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> localVarResponse = GetShipmentsShipmentsGetWithHttpInfo();
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> localVarResponse = GetPersonalShipmentsWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Shipments Get all the shipments related to this user.  :return: a list of shipments
+        /// Get My Shipments Get all the shipments related to the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Shipment&gt;</returns>
-        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> GetShipmentsShipmentsGetWithHttpInfo(int operationIndex = 0)
+        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> GetPersonalShipmentsWithHttpInfo(int operationIndex = 0)
         {
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
 
@@ -602,15 +592,15 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
             }
 
 
-            localVarRequestOptions.Operation = "ShipmentsApi.GetShipmentsShipmentsGet";
+            localVarRequestOptions.Operation = "MeApi.GetPersonalShipments";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<Shipment>>("/shipments/", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<List<Shipment>>("/me/shipments", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetShipmentsShipmentsGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPersonalShipments", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -621,26 +611,26 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Shipments Get all the shipments related to this user.  :return: a list of shipments
+        /// Get My Shipments Get all the shipments related to the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Shipment&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Shipment>> GetShipmentsShipmentsGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<Shipment>> GetPersonalShipmentsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> localVarResponse = await GetShipmentsShipmentsGetWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> localVarResponse = await GetPersonalShipmentsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Shipments Get all the shipments related to this user.  :return: a list of shipments
+        /// Get My Shipments Get all the shipments related to the currently logged in user.
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Shipment&gt;)</returns>
-        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>>> GetShipmentsShipmentsGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>>> GetPersonalShipmentsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
@@ -666,16 +656,16 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
             }
 
 
-            localVarRequestOptions.Operation = "ShipmentsApi.GetShipmentsShipmentsGet";
+            localVarRequestOptions.Operation = "MeApi.GetPersonalShipments";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Shipment>>("/shipments/", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Shipment>>("/me/shipments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetShipmentsShipmentsGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPersonalShipments", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

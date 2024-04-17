@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:DataType="Shell"
     x:Class="BitBuggy.Shipping.Maui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BitBuggy.Shipping.Maui"
     xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
-    Shell.FlyoutBehavior="Disabled"
-    Title="BitBuggy.Shipping.Maui">
+    Title="BitBuggy.Shipping.Maui"
+    x:DataType="Shell"
+    Shell.FlyoutBehavior="Disabled">
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent
@@ -23,6 +23,6 @@
         <ShellContent
             Title="Customer"
             ContentTemplate="{DataTemplate views:CustomerPage}"
-            Route="account"/>
+            Route="customer" />
     </FlyoutItem>
 </Shell>

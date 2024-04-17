@@ -1,20 +1,20 @@
 
+using BitBuggy.Shipping.Maui.ViewModels;
+
 namespace BitBuggy.Shipping.Maui.Views;
 
 public partial class CustomerPage : ContentPage
 {
-    private readonly ShippingService _shippingService;
-
-	public CustomerPage(ShippingService shippingService)
+    private readonly TrackingViewModel _trackingViewModel;
+	public CustomerPage(TrackingViewModel trackingViewModel)
 	{
+        _trackingViewModel = trackingViewModel;
+        BindingContext = _trackingViewModel;
 		InitializeComponent();
-        _shippingService = shippingService;
-        
-        
     }
 
-    private void ContentPage_Appearing(object sender, EventArgs e)
+    private async void ContentPage_Appearing(object sender, EventArgs e)
     {
-        //api request for orders
+        await _trackingViewModel.RetrieveDeliveriesAsync();
     }
 }

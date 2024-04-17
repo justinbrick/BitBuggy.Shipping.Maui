@@ -88,4 +88,12 @@
       </MauiXaml>
     </ItemGroup>
 
+    <ItemGroup>
+      <EditorConfigFiles Remove="C:\Users\Justin\source\repos\BitBuggy.Shipping.Maui\Shipping\.editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="C:\Users\Justin\source\repos\BitBuggy.Shipping.Maui\Shipping\.editorconfig" />
+    </ItemGroup>
+
 </Project>

@@ -21,6 +21,56 @@ public class AccountViewModel : INotifyPropertyChanged
     private readonly ILogger _logger;
     private bool _refreshed = false;
 
+
+    private string? _firstName;
+    public string? FirstName
+    {
+        get => _firstName;
+        set
+        {
+            if (_firstName != value)
+            {
+                _firstName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FirstName)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FullName)));
+            }
+        }
+    }
+
+    private string? _lastName;
+    public string? LastName
+    {
+        get => _lastName;
+        set
+        {
+            if (_lastName != value)
+            {
+                _lastName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LastName)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FullName)));
+            }
+        }
+    }
+
+    public string FullName
+    {
+        get => $"{_firstName} {_lastName}";
+    }
+
+    private string? _loginFailureMessage;
+    public string? LoginFailureMessage
+    {
+        get => _loginFailureMessage;
+        set
+        {
+            if (_loginFailureMessage != value)
+            {
+                _loginFailureMessage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoginFailureMessage)));
+            }
+        }
+    }
+
     public ICommand SignInCommand { get; }
     public ICommand SignOutCommand { get; }
     public ICommand RefreshCommand { get; }
@@ -62,11 +112,21 @@ public class AccountViewModel : INotifyPropertyChanged
 	/// <returns></returns>
     public async Task SignInAsync()
     {
-        AuthenticationResult? token = await _clientApplication.AcquireTokenInteractive(["openid", "offline_access", "https://bitbuggy.onmicrosoft.com/shipping/Shipment.Write"])
-            .WithPrompt(Prompt.SelectAccount)
-            .ExecuteAsync();
+        try
+        {
+            AuthenticationResult? auth = await _clientApplication.AcquireTokenInteractive(["openid", "offline_access"])
+                .WithPrompt(Prompt.SelectAccount)
+                .ExecuteAsync();
 
-        Account = token.Account;
+            LoginFailureMessage = null;
+            Account = auth.Account;
+            FirstName = auth.ClaimsPrincipal.FindFirst("given_name")?.Value;
+            LastName = auth.ClaimsPrincipal.FindFirst("family_name")?.Value;
+        } catch (MsalException ex)
+        {
+            _logger.LogError(ex, "Failed to sign in");
+            LoginFailureMessage = ex.Message;
+        }
     }
 
     /// <summary>

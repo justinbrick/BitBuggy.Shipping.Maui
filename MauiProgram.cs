@@ -3,6 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Client;
 using BitBuggy.Shipping.Maui.ViewModels;
 using BitBuggy.Shipping.Maui.Views;
+using BitBuggy.Shipping.Maui.Shipping.Client;
+using BitBuggy.Shipping.Maui.Shipping.Api;
+using BitBuggy.Shipping.Maui.Shipping;
 
 namespace BitBuggy.Shipping.Maui;
 
@@ -49,18 +52,19 @@ public static class MauiProgram
 
         // Services
         builder.Services
+            .AddSingleton<AccountAuthorizationService>()
             .AddSingleton<ShippingService>();
 
-        // Static Viewmodels
+        // Viewmodels
         builder.Services
-            .AddSingleton<AccountViewModel>(); 
+            .AddTransient<AccountViewModel>()
+            .AddTransient<TrackingViewModel>();
 
         // Pages
         builder.Services
-            .AddSingleton<MainPage>()
-            .AddSingleton<AccountPage>()
-            .AddSingleton<CustomerPage>();
-        
+            .AddTransient<MainPage>()
+            .AddTransient<AccountPage>()
+            .AddTransient<CustomerPage>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

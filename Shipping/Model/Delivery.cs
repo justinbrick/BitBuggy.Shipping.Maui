@@ -45,17 +45,30 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Delivery" /> class.
         /// </summary>
+        /// <param name="deliveryId">deliveryId (required).</param>
         /// <param name="orderId">orderId (required).</param>
+        /// <param name="shipments">shipments (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="fulfilledAt">fulfilledAt.</param>
         /// <param name="deliverySla">deliverySla (required).</param>
-        public Delivery(Guid orderId = default(Guid), DateTime createdAt = default(DateTime), FulfilledAt fulfilledAt = default(FulfilledAt), SLA deliverySla = default(SLA))
+        public Delivery(Guid deliveryId = default(Guid), Guid orderId = default(Guid), List<Shipment> shipments = default(List<Shipment>), DateTime createdAt = default(DateTime), SLA deliverySla = default(SLA))
         {
+            this.DeliveryId = deliveryId;
             this.OrderId = orderId;
+            // to ensure "shipments" is required (not null)
+            if (shipments == null)
+            {
+                throw new ArgumentNullException("shipments is a required property for Delivery and cannot be null");
+            }
+            this.Shipments = shipments;
             this.CreatedAt = createdAt;
             this.DeliverySla = deliverySla;
-            this.FulfilledAt = fulfilledAt;
         }
+
+        /// <summary>
+        /// Gets or Sets DeliveryId
+        /// </summary>
+        [DataMember(Name = "delivery_id", IsRequired = true, EmitDefaultValue = true)]
+        public Guid DeliveryId { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderId
@@ -64,16 +77,16 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         public Guid OrderId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Shipments
+        /// </summary>
+        [DataMember(Name = "shipments", IsRequired = true, EmitDefaultValue = true)]
+        public List<Shipment> Shipments { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "created_at", IsRequired = true, EmitDefaultValue = true)]
         public DateTime CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FulfilledAt
-        /// </summary>
-        [DataMember(Name = "fulfilled_at", EmitDefaultValue = false)]
-        public FulfilledAt FulfilledAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,9 +96,10 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Delivery {\n");
+            sb.Append("  DeliveryId: ").Append(DeliveryId).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  Shipments: ").Append(Shipments).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  FulfilledAt: ").Append(FulfilledAt).Append("\n");
             sb.Append("  DeliverySla: ").Append(DeliverySla).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
