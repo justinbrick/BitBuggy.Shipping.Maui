@@ -1,19 +1,9 @@
-using Microsoft.Identity.Client;
-using MiNET.Utils;
-using Org.BouncyCastle.Cms;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Net;
-using System.Windows.Input;
-
-using System.Text.Json;
-
-
-using System.Runtime.CompilerServices;
-using BitBuggy.Shipping.Maui.Shipping.Api;
-using BitBuggy.Shipping.Maui.Shipping.Client;
 using BitBuggy.Shipping.Maui.Shipping;
 using BitBuggy.Shipping.Maui.Shipping.Model;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace BitBuggy.Shipping.Maui.ViewModels;
 

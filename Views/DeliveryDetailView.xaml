@@ -16,6 +16,6 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-
+        <CollectionView ItemsSource="{Binding Shipments}" />
     </StackLayout>
 </ContentView>
