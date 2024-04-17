@@ -107,10 +107,7 @@
 
                 <!--  Delivery List  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.55">
-                    <CollectionView
-                        ItemTemplate="{DataTemplate views:DeliveryDetailView}"
-                        ItemsSource="{Binding DeliveryList}"
-                        SelectionMode="None" />
+                    <CollectionView ItemTemplate="{DataTemplate views:DeliveryDetailView}" ItemsSource="{Binding DeliveryList}" />
                 </Frame>
             </FlexLayout>
 

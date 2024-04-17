@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:BitBuggy.Shipping.Maui.Shipping.Model"
+    xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
     x:DataType="model:Delivery">
     <StackLayout Orientation="Vertical">
         <Label HorizontalOptions="Center">
@@ -16,6 +17,6 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <CollectionView ItemsSource="{Binding Shipments}" />
+        <CollectionView ItemTemplate="{DataTemplate views:ShipmentDetailView}" ItemsSource="{Binding Shipments}" />
     </StackLayout>
 </ContentView>
