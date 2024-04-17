@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
+    xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
     Title="CustomerPage"
     x:DataType="viewmodels:TrackingViewModel"
     Appearing="ContentPage_Appearing">
@@ -106,7 +107,7 @@
 
                 <!--  Delivery List  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.55">
-                    <ListView ItemsSource="{Binding DeliveryList}" />
+                    <CollectionView ItemTemplate="{DataTemplate views:DeliveryDetailView}" ItemsSource="{Binding DeliveryList}" />
                 </Frame>
             </FlexLayout>
 
