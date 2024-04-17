@@ -33,7 +33,7 @@
                 HeightRequest="300"
                 Orientation="Vertical">
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
 
 
                     <!--  BitBuggy Logo  -->
@@ -64,6 +64,7 @@
 
                 </StackLayout>
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 
 
                 <!--  Label for the Shipment Tracking Interface  -->
@@ -71,8 +72,29 @@
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalOptions="Center"
-                    Text="Selected Name and UID"
+                    Text="Tracking ID/Number"
                     TextColor="{StaticResource BitGoldLight}" />
+
+                <Entry
+                    WidthRequest="300"
+                    Placeholder="Tracking ID/Number"
+                    BackgroundColor="White"
+                    BindingContext="0"
+                    Margin="0"/>
+
+                    <Button 
+                        Text="Search" BackgroundColor="{StaticResource BitGoldLight}"
+                        TextColor="{StaticResource BitGreenDark}"
+                        FontAttributes="Bold"
+                        Margin="10,0,0,0">
+
+
+                    </Button>
+                
+                
+                
+            </StackLayout>
+
             </StackLayout>
 
 
