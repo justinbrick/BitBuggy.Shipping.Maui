@@ -15,6 +15,6 @@ public partial class CustomerPage : ContentPage
 
     private async void ContentPage_Appearing(object sender, EventArgs e)
     {
-        await _trackingViewModel.RetrieveDeliveriesAsync();
+        //await _trackingViewModel.RetrieveDeliveriesAsync();
     }
 }
