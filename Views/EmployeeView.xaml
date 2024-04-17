@@ -109,7 +109,9 @@
 
                 <!--  Status Frame  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow=".55">
-                    <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
+                    <Border StrokeThickness="10" BackgroundColor="{StaticResource BitGoldLight}" Stroke="{StaticResource BitGoldLight}">
+                    <StackLayout BackgroundColor="{StaticResource BitGreenDark}" >
+                        
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
                             <Label
@@ -147,6 +149,7 @@
                         <!--  Your content here  -->
 
                     </StackLayout>
+                    </Border>
                 </Frame>
             </FlexLayout>
 
