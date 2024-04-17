@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BitBuggy.Shipping.Maui.Views.EmployeeView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="{StaticResource BitGreenDark}" />
+
+            </Style>
+
+            <Style x:Key="StatusStyle" TargetType="Button">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Background" Value="{StaticResource BitGreenDark}" />
+                <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
+                <Setter Property="BorderWidth" Value="1" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView Background="{StaticResource BitGreenLight}" VerticalOptions="FillAndExpand">
+
+        <StackLayout VerticalOptions="FillAndExpand">
+            <!--  Hero  -->
+            <StackLayout
+            Background="{StaticResource BitGreenLight}"
+            HeightRequest="300"
+            Orientation="Vertical">
+
+                <StackLayout Orientation="Horizontal">
+
+
+                    <!--  BitBuggy Logo  -->
+                    <Image
+                Margin="100, 80, 100, 0"
+                Aspect="AspectFit"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                HeightRequest="150"
+                Source="bit_buggy_image.png" />
+
+
+                    <Label
+                         Margin="280, 100, 10, 0"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="Center"
+                        Text="Select Status: "
+                        TextColor="{StaticResource BitGoldLight}" />
+
+
+
+                    <Picker
+                        Margin="10,10,10,0"
+                        WidthRequest="300"
+                        BackgroundColor="White"
+                        BindingContext="0"
+                        VerticalTextAlignment="Center"
+                        VerticalOptions="CenterAndExpand"
+                        Title="Please select the status"
+                        
+                        />
+
+                </StackLayout>
+
+
+
+                <!--  Label for the Shipment Tracking Interface  -->
+                <Label
+                FontAttributes="Bold"
+                FontSize="Medium"
+                HorizontalOptions="Center"
+                Text="Selected Name and UID"
+                TextColor="{StaticResource BitGoldLight}" />
+            </StackLayout>
+
+
+            <FlexLayout Direction="{OnPlatform Row, Android=Column, iOS=Column}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+                
+
+                <!--  Status Frame  -->
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow=".55">
+                    <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
+                        <!--  Top to Bottom Status  -->
+                        <VerticalStackLayout Margin="10" VerticalOptions="Start">
+                            <Label
+                            Margin="10"
+                            FontSize="Title"
+                            HorizontalOptions="Center"
+                            Text="Item # And Name"
+                            TextColor="{StaticResource BitGoldLight}" />
+
+                            <ImageButton
+                            Margin="40"
+                            Aspect="AspectFit"
+                            BackgroundColor="{StaticResource BitGreenDark}"
+                            BorderColor="{StaticResource BitGoldLight}"
+                            BorderWidth="2"
+                            HorizontalOptions="Center"
+                            Source="productimagehuge.png"
+                            VerticalOptions="Center" />
+
+                            <!--  Status Buttons  -->
+                            <StackLayout
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start">
+
+                                <!--  Center for both  -->
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                            </StackLayout>
+                        </VerticalStackLayout>
+
+
+                        <!--  Your content here  -->
+
+                    </StackLayout>
+                </Frame>
+            </FlexLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

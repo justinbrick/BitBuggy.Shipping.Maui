@@ -53,10 +53,10 @@
             </StackLayout>
 
 
-            <FlexLayout Direction="{OnPlatform Row, Android=Column, iOS=Column}">
+            <FlexLayout Direction="{OnPlatform Row, Android=Column, iOS=Column}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.45">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow=".45" >
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
@@ -99,7 +99,7 @@
 
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.55">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow=".55">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
@@ -122,7 +122,6 @@
 
                             <!--  Status Buttons  -->
                             <StackLayout
-                                Margin="0,100,0,0"
                                 HorizontalOptions="Center"
                                 Orientation="Horizontal"
                                 VerticalOptions="Start">

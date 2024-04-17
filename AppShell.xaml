@@ -24,5 +24,10 @@
             Title="Customer"
             ContentTemplate="{DataTemplate views:CustomerPage}"
             Route="customer" />
+
+        <ShellContent
+            Title="Employee"
+            ContentTemplate="{DataTemplate views:EmployeeView}"
+            Route="employee" />
     </FlyoutItem>
 </Shell>
