@@ -6,40 +6,40 @@ namespace BitBuggy.Shipping.Maui.Views;
 
 public partial class CustomerPage : ContentPage
 {
-    private readonly TrackingViewModel _trackingViewModel;
-	public CustomerPage(TrackingViewModel trackingViewModel)
+    private readonly TrackingViewModel _tracking;
+	public CustomerPage(TrackingViewModel tracking)
 	{
-        _trackingViewModel = trackingViewModel;
-        BindingContext = _trackingViewModel;
+        _tracking = tracking;
+        BindingContext = _tracking;
 		InitializeComponent();
     }
 
     private async void ContentPage_Appearing(object sender, EventArgs e)
     {
-        await _trackingViewModel.RetrieveDeliveriesAsync();
+        await _tracking.RetrieveDeliveriesAsync();
     }
 
     private void OnDeliverySelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (e.CurrentSelection.Count > 0 && e.CurrentSelection[0] is Delivery delivery && _trackingViewModel.SelectedDelivery != delivery)
+        if (e.CurrentSelection.Count > 0 && e.CurrentSelection[0] is Delivery delivery && _tracking.SelectedDelivery != delivery)
         {
-            _trackingViewModel.SelectedDelivery = delivery;
+            _tracking.SelectedDelivery = delivery;
         }
         else
         {
-            _trackingViewModel.SelectedDelivery = null;
+            _tracking.SelectedDelivery = null;
         }
     }
 
     private void OnShipmentSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (e.CurrentSelection.Count > 0 && e.CurrentSelection[0] is Shipment shipment && _trackingViewModel.SelectedShipment != shipment)
+        if (e.CurrentSelection.Count > 0 && e.CurrentSelection[0] is Shipment shipment && _tracking.SelectedShipment != shipment)
         {
-            _trackingViewModel.SelectedShipment = shipment;
+            _tracking.SelectedShipment = shipment;
         }
         else
         {
-            _trackingViewModel.SelectedShipment = null;
+            _tracking.SelectedShipment = null;
         }
     }
 }
