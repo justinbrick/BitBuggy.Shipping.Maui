@@ -3,8 +3,12 @@
     x:Class="BitBuggy.Shipping.Maui.Views.CustomerPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:BitBuggy.Shipping.Maui.Shipping.Model"
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
+    xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
+    x:Name="Page"
     Title="CustomerPage"
+    x:DataType="viewmodels:TrackingViewModel"
     Appearing="ContentPage_Appearing">
 
 
@@ -14,276 +18,165 @@
                 <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
                 <Setter Property="CornerRadius" Value="10" />
                 <Setter Property="BackgroundColor" Value="{StaticResource BitGreenDark}" />
-                <Setter Property="WidthRequest" Value="500" />
+
+            </Style>
+
+            <Style x:Key="StatusStyle" TargetType="Button">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Background" Value="{StaticResource BitGreenDark}" />
+                <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
+                <Setter Property="BorderWidth" Value="1" />
             </Style>
             <viewmodels:ShipmentStatusViewModel x:Key="CurrentStatusModel" x:Name="CurrentStatus" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView>
+    <ScrollView Background="{StaticResource BitGreenLight}">
 
-        <StackLayout>
-            
+        <StackLayout VerticalOptions="FillAndExpand">
+            <!--  Hero  -->
+            <StackLayout
+                Background="{StaticResource BitGreenLight}"
+                HeightRequest="300"
+                Orientation="Vertical">
 
-            <StackLayout Orientation="Vertical" Background="{StaticResource BitGreenLight}" HeightRequest="300">
-            <Image
-                     Aspect="AspectFit"
-                    HeightRequest="250"
-                    MaximumHeightRequest="250"
-                    MaximumWidthRequest="250"
-                    MinimumHeightRequest="150"
-                    MinimumWidthRequest="150"
-                    Source="bit_buggy_image.png"
-                    WidthRequest="250"
-                    />
+                <!--  BitBuggy Logo  -->
+                <Image
+                    Margin="15"
+                    Aspect="AspectFit"
+                    HeightRequest="200"
+                    Source="bit_buggy_image.png" />
 
-
-
-            <Label
+                <!--  Label for the Shipment Tracking Interface  -->
+                <Label
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     Text="Shipment Tracking Interface"
-                    TextColor="{StaticResource BitGoldLight}"
-                    VerticalOptions="End" />
+                    TextColor="{StaticResource BitGoldLight}" />
+            </StackLayout>
 
 
+            <FlexLayout
+                Direction="{OnPlatform Row,
+                                       Android=Column,
+                                       iOS=Column}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
 
-
-        </StackLayout>
-
-
-
-
-
-        <!--  Borders with green background  -->
-
-            <StackLayout Orientation="Horizontal" >
-   
-               
-
-        
-        <!--  Left border  -->
-
-                <Frame BackgroundColor="{StaticResource BitGreenLight}">
+                <!--  Status Frame  -->
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.45">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
-                        
-                        <StackLayout.BindingContext>
-                            <viewmodels:ShipmentStatusViewModel/>
-                        </StackLayout.BindingContext>
-                        
-                        <HorizontalStackLayout HorizontalOptions="Start">
 
-                            <VerticalStackLayout Margin="0,10,0,0" VerticalOptions="Start">
+                        <!--  Message for no status  -->
+                        <Label
+                            Margin="25"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding SelectedShipment, Converter={StaticResource InvertedNullBoolConverter}}"
+                            Text="Select a shipment to view shipment status" />
 
-                                <Label
-                                    Margin="0,10,0,0"
-                                    FontSize="Title"
-                                    HorizontalOptions="Center"
-                                    Text="Item # And Name"
-                                    TextColor="{StaticResource BitGoldLight}" />
+                        <!--  Top to Bottom Status  -->
+                        <VerticalStackLayout
+                            Margin="10"
+                            BindingContext="{Binding SelectedShipment}"
+                            IsVisible="{Binding Source={x:Reference Page}, Path=BindingContext.SelectedShipment, Converter={StaticResource NullBoolConverter}}">
 
-                                <ImageButton
-                                    Margin="40"
-                                    BackgroundColor="{StaticResource BitGreenDark}"
-                                    BorderColor="{StaticResource BitGoldLight}"
-                                    BorderWidth="2"
-                                    HeightRequest="300"
-                                    HorizontalOptions="Start"
-                                    MaximumHeightRequest="300"
-                                    MaximumWidthRequest="200"
-                                    MinimumHeightRequest="150"
-                                    MinimumWidthRequest="100"
-                                    Source="productimagehuge.png"
-                                    VerticalOptions="Center"
-                                    WidthRequest="200" />
+                            <Label
+                                Margin="10"
+                                x:DataType="models:Shipment"
+                                FontSize="Title"
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource BitGoldLight}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="(" />
+                                        <Span Text="{Binding Items.Count}" />
+                                        <Span Text=" items) " />
+                                        <Span Text="Shipment - " />
+                                        <Span Text="{Binding CreatedAt}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
 
+                            <ImageButton
+                                Margin="40"
+                                x:DataType="models:Shipment"
+                                Aspect="AspectFit"
+                                BackgroundColor="{StaticResource BitGreenDark}"
+                                BorderColor="{StaticResource BitGoldLight}"
+                                BorderWidth="2"
+                                HorizontalOptions="Center"
+                                Source="productimagehuge.png"
+                                VerticalOptions="Center" />
 
-                            </VerticalStackLayout>
+                            <!--  Status Buttons  -->
+                            <StackLayout
+                                x:DataType="models:Shipment"
+                                HorizontalOptions="Center"
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
 
-
-                            <StackLayout Orientation="Vertical" Margin="0,100,0,0" VerticalOptions="Start">
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is being Processed"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is being SHipped to our Warehouse in "
-                                        TextColor="{StaticResource BitGoldLight}" />
-                                    <Label
-                                        Margin="5,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="North Carolina"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is out for Delivery"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-
-                                    <Button
-                                        Margin="0,0,0,10"
-                                        Background="{StaticResource BitGreenDark}"
-                                        BorderColor="{StaticResource BitGoldLight}"
-                                        BorderWidth="1"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Margin="10,0,0,0"
-                                        FontAttributes="Bold"
-                                        Text="Your Item is Deliverered"
-                                        TextColor="{StaticResource BitGoldLight}" />
-
-                                </StackLayout>
-
-
-
-
+                                <!--  Center for both  -->
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
+                                <Button Style="{StaticResource StatusStyle}" />
                             </StackLayout>
-
-                        </HorizontalStackLayout>
-
-
-
-
-
-
-
-
-
-        
-        <!--  Your content here  -->
-        
+                        </VerticalStackLayout>
                     </StackLayout>
                 </Frame>
 
 
+                <!--  Delivery List  -->
+                <Frame
+                    BackgroundColor="{StaticResource BitGreenLight}"
+                    FlexLayout.Grow="0.55"
+                    VerticalOptions="Fill">
+                    <!--  Flex Layout which allows for  -->
+                    <Grid ColumnDefinitions="0.4*,5,0.6*">
+                        <Border
+                            Grid.Column="0"
+                            Padding="5"
+                            Stroke="Black"
+                            StrokeThickness="1">
+                            <CollectionView
+                                ItemsSource="{Binding DeliveryList}"
+                                SelectionChanged="OnDeliverySelectionChanged"
+                                SelectionMode="Single">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout x:DataType="models:Delivery">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Delivery - " />
+                                                        <Span Text="{Binding CreatedAt}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Border>
 
-
-
-        
-        <!--  Right border  -->
-
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" WidthRequest="1097">
-                    <FlexLayout Direction="Column" FlowDirection="LeftToRight" AlignContent="Stretch" BackgroundColor="{StaticResource BitGreenDark}">
-
-                        <StackLayout Orientation="Vertical">
-                            <StackLayout.BindingContext>
-                                <viewmodels:ShipmentListViewModel/>
-                            </StackLayout.BindingContext>
-
-                            <Label
-                                FontSize="Title"
-                                HorizontalTextAlignment="Center"
-                                Text="{Binding CustomerName}"
-                                TextColor="{StaticResource BitGoldLight}" />
-
-                            <Line BackgroundColor="{StaticResource BitGoldLight}" StrokeLineCap="Flat" IsVisible="true" StrokeThickness="3" WidthRequest="3"/>
-        
-
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-
-                                <ImageButton
-                                    Margin="0,100,40,0"
-                                    BackgroundColor="{StaticResource BitGreenDark}"
-                                    BorderColor="{StaticResource BitGoldLight}"
-                                    BorderWidth="2"
-                                    HorizontalOptions="Center"
-                                    MaximumHeightRequest="90"
-                                    MaximumWidthRequest="90"
-                                    MinimumHeightRequest="90"
-                                    MinimumWidthRequest="90"
-                                    Source="{Binding ItemImage1}"
-                                    VerticalOptions="Start" />
-                                <Label
-                                    Margin="0,100,400,0"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Start"
-                                    Text="{Binding ItemLabel1}"
-                                    TextColor="{StaticResource BitGoldLight}" />
-
-
-
-
-                            </StackLayout>
-
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-
-                                <ImageButton
-                                    Margin="0,10,40,0"
-                                    BackgroundColor="{StaticResource BitGreenDark}"
-                                    BorderColor="{StaticResource BitGoldLight}"
-                                    BorderWidth="2"
-                                    HorizontalOptions="Center"
-                                    MaximumHeightRequest="90"
-                                    MaximumWidthRequest="90"
-                                    MinimumHeightRequest="90"
-                                    MinimumWidthRequest="90"
-                                    Source="{Binding ItemImage2}"
-                                    VerticalOptions="Start" />
-                                <Label
-                                    Margin="0,10,400,0"
-                                    FontSize="Medium"
-                                    HorizontalOptions="Start"
-                                    Text="{Binding ItemLabel2}"
-                                    TextColor="{StaticResource BitGoldLight}" />
-
-
-
-
-                            </StackLayout>
-
-
-                        </StackLayout>
-
-        
-        <!--  Your content here  -->
-        
-                    </FlexLayout>
+                        <Border
+                            Grid.Column="2"
+                            Padding="5"
+                            Stroke="Black"
+                            StrokeThickness="1">
+                            <CollectionView
+                                IsVisible="{Binding SelectedDelivery, Converter={StaticResource NullBoolConverter}}"
+                                ItemsSource="{Binding SelectedDelivery.Shipments}"
+                                MaximumHeightRequest="500"
+                                SelectionChanged="OnShipmentSelectionChanged"
+                                SelectionMode="Single"
+                                VerticalScrollBarVisibility="Always" />
+                        </Border>
+                    </Grid>
                 </Frame>
-            </StackLayout>
+            </FlexLayout>
 
         </StackLayout>
     </ScrollView>

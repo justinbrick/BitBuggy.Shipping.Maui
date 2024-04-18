@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,9 +18,61 @@ namespace BitBuggy.Shipping.Maui.ViewModels;
 public class AccountViewModel : INotifyPropertyChanged
 {
 
+    public static readonly string[] Scopes = ["openid", "offline_access"];
+
     private readonly IPublicClientApplication _clientApplication;
     private readonly ILogger _logger;
-    private bool _refreshed = false;
+    private bool _signedIn = false;
+    private string? _firstName;
+    private string? _lastName;
+    private string? _loginFailureMessage;
+
+
+    public string? FirstName
+    {
+        get => _firstName;
+        set
+        {
+            if (_firstName != value)
+            {
+                _firstName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FirstName)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FullName)));
+            }
+        }
+    }
+
+    public string? LastName
+    {
+        get => _lastName;
+        set
+        {
+            if (_lastName != value)
+            {
+                _lastName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LastName)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FullName)));
+            }
+        }
+    }
+
+    public string FullName
+    {
+        get => $"{_firstName} {_lastName}";
+    }
+
+    public string? LoginFailureMessage
+    {
+        get => _loginFailureMessage;
+        set
+        {
+            if (_loginFailureMessage != value)
+            {
+                _loginFailureMessage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoginFailureMessage)));
+            }
+        }
+    }
 
     public ICommand SignInCommand { get; }
     public ICommand SignOutCommand { get; }
@@ -31,29 +84,33 @@ public class AccountViewModel : INotifyPropertyChanged
         _logger = logger;
         SignInCommand = new Command(async () => await SignInAsync());
         SignOutCommand = new Command(async () => await SignOutAsync());
-        RefreshCommand = new Command(async () => await RefreshAsync());
+        RefreshCommand = new Command(async () => await LoginSilentAsync());
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public bool SignedIn
     {
-        get => _account is not null;
-    }
-
-    private IAccount? _account;
-    public IAccount? Account
-    {
-        get => _account;
+        get => _signedIn;
         set
         {
-            if (_account != value)
+            if (_signedIn != value)
             {
-                _account = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Account)));
+                _signedIn = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SignedIn)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SignedOut)));
             }
         }
+    }
+
+    public bool SignedOut => !SignedIn;
+
+    private void AssignPropertiesFromPrincipal(ClaimsPrincipal principal)
+    {
+        LoginFailureMessage = null;
+        SignedIn = true;
+        FirstName = principal.FindFirst("given_name")?.Value;
+        LastName = principal.FindFirst("family_name")?.Value;
     }
 
     /// <summary>
@@ -62,11 +119,18 @@ public class AccountViewModel : INotifyPropertyChanged
 	/// <returns></returns>
     public async Task SignInAsync()
     {
-        AuthenticationResult? token = await _clientApplication.AcquireTokenInteractive(["openid", "offline_access", "https://bitbuggy.onmicrosoft.com/shipping/Shipment.Write"])
-            .WithPrompt(Prompt.SelectAccount)
-            .ExecuteAsync();
+        try
+        {
+            AuthenticationResult? auth = await _clientApplication
+                .AcquireTokenInteractive(Scopes)
+                .ExecuteAsync();
 
-        Account = token.Account;
+            AssignPropertiesFromPrincipal(auth.ClaimsPrincipal);
+        } catch (MsalException ex)
+        {
+            _logger.LogError(ex, "Failed to sign in");
+            LoginFailureMessage = ex.Message;
+        }
     }
 
     /// <summary>
@@ -75,30 +139,37 @@ public class AccountViewModel : INotifyPropertyChanged
     /// <returns></returns>
     public async Task SignOutAsync()
     {
-        if (Account is null)
-            return;
+        IEnumerable<IAccount> accounts = await _clientApplication.GetAccountsAsync();
+        foreach (IAccount account in accounts)
+        {
+            await _clientApplication.RemoveAsync(account);
+        }
 
-        await _clientApplication.RemoveAsync(Account);
-        Account = null;
+        SignedIn = false;
+
     }
 
     /// <summary>
-    /// Refreshes the current account to make sure that it is still valid.
-    /// This will look to see if the public client application has any accounts registered in its cache - picks the first.
+    /// Attempts to log the user in silently.
     /// </summary>
     /// <returns></returns>
-    public async Task RefreshAsync()
+    public async Task LoginSilentAsync()
     {
-        if (_refreshed)
+        IAccount? account = (await _clientApplication.GetAccountsAsync()).FirstOrDefault();
+
+        if (account == null)
+        {
             return;
-        _refreshed = true;
+        }
 
-        IEnumerable<IAccount> accounts = await _clientApplication.GetAccountsAsync();
+        try
+        {
+            AuthenticationResult auth = await _clientApplication
+                .AcquireTokenSilent(Scopes, account)
+                .ExecuteAsync();
 
-        if (!accounts.Any())
-            return;
-
-        IAccount account = accounts.First();
-        Account = account;
+            AssignPropertiesFromPrincipal(auth.ClaimsPrincipal);
+        }
+        catch (MsalUiRequiredException) { }
     }
 }

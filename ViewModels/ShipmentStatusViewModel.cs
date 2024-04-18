@@ -15,6 +15,25 @@ class ShipmentStatusViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
+    private bool _hasStatus = false;
+    /// <summary>
+    /// Whether or not the status has been loaded.
+    /// Once this is marked as true, the status will be displayed.
+    /// By default, this is false.
+    /// </summary>
+    public bool HasStatus
+    {
+        get => _hasStatus;
+        set
+        {
+            if (_hasStatus != value)
+            {
+                _hasStatus = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasStatus)));
+            }
+        }
+    }
+
     private ShipmentStatusModel.Status _status = ShipmentStatusModel.Status.Pending;
     public ShipmentStatusModel.Status Status
     {

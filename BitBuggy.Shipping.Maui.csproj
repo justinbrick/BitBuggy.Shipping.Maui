@@ -64,11 +64,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Identity.Client" Version="4.59.0" />
+        <PackageReference Include="Microsoft.Identity.Client" Version="4.60.3" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-        <PackageReference Include="MiNET" Version="1.0.2304" />
         <PackageReference Include="Polly" Version="8.3.1" />
         <PackageReference Include="RestSharp" Version="110.2.0" />
     </ItemGroup>
@@ -80,12 +79,29 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="ViewModels\EmplyeeView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="ViewModels\NewPage1.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Views\AccountPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\CustomerPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Views\EmployeeView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EditorConfigFiles Remove="C:\Users\Justin\source\repos\BitBuggy.Shipping.Maui\Shipping\.editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="C:\Users\Justin\source\repos\BitBuggy.Shipping.Maui\Shipping\.editorconfig" />
     </ItemGroup>
 
 </Project>

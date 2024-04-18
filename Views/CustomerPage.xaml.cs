@@ -1,22 +1,45 @@
-using Microsoft.UI.Xaml;
-using System.Windows.Controls;
+
+using BitBuggy.Shipping.Maui.Shipping.Model;
+using BitBuggy.Shipping.Maui.ViewModels;
 
 namespace BitBuggy.Shipping.Maui.Views;
 
 public partial class CustomerPage : ContentPage
 {
-    private readonly ShippingService _shippingService;
-
-	public CustomerPage(ShippingService shippingService)
+    private readonly TrackingViewModel _trackingViewModel;
+	public CustomerPage(TrackingViewModel trackingViewModel)
 	{
+        _trackingViewModel = trackingViewModel;
+        BindingContext = _trackingViewModel;
 		InitializeComponent();
-        _shippingService = shippingService;
-        
-        
     }
 
-    private void ContentPage_Appearing(object sender, EventArgs e)
+    private async void ContentPage_Appearing(object sender, EventArgs e)
     {
-        //api request for orders
+        await _trackingViewModel.RetrieveDeliveriesAsync();
+    }
+
+    private void OnDeliverySelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.Count > 0 && e.CurrentSelection[0] is Delivery delivery && _trackingViewModel.SelectedDelivery != delivery)
+        {
+            _trackingViewModel.SelectedDelivery = delivery;
+        }
+        else
+        {
+            _trackingViewModel.SelectedDelivery = null;
+        }
+    }
+
+    private void OnShipmentSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.Count > 0 && e.CurrentSelection[0] is Shipment shipment && _trackingViewModel.SelectedShipment != shipment)
+        {
+            _trackingViewModel.SelectedShipment = shipment;
+        }
+        else
+        {
+            _trackingViewModel.SelectedShipment = null;
+        }
     }
 }

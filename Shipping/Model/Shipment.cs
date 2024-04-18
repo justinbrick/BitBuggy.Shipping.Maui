@@ -51,10 +51,8 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         /// <param name="provider">provider (required).</param>
         /// <param name="providerShipmentId">providerShipmentId (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="expectedAt">expectedAt (required).</param>
-        /// <param name="deliveredAt">deliveredAt.</param>
         /// <param name="items">items (required).</param>
-        public Shipment(Guid shipmentId = default(Guid), string fromAddress = default(string), string shippingAddress = default(string), Provider provider = default(Provider), string providerShipmentId = default(string), DateTime createdAt = default(DateTime), DateTime expectedAt = default(DateTime), DeliveredAt deliveredAt = default(DeliveredAt), List<ShipmentItem> items = default(List<ShipmentItem>))
+        public Shipment(Guid shipmentId = default(Guid), string fromAddress = default(string), string shippingAddress = default(string), Provider provider = default(Provider), string providerShipmentId = default(string), DateTime createdAt = default(DateTime), List<ShipmentItem> items = default(List<ShipmentItem>))
         {
             this.ShipmentId = shipmentId;
             // to ensure "fromAddress" is required (not null)
@@ -77,14 +75,12 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
             }
             this.ProviderShipmentId = providerShipmentId;
             this.CreatedAt = createdAt;
-            this.ExpectedAt = expectedAt;
             // to ensure "items" is required (not null)
             if (items == null)
             {
                 throw new ArgumentNullException("items is a required property for Shipment and cannot be null");
             }
             this.Items = items;
-            this.DeliveredAt = deliveredAt;
         }
 
         /// <summary>
@@ -118,18 +114,6 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExpectedAt
-        /// </summary>
-        [DataMember(Name = "expected_at", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime ExpectedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DeliveredAt
-        /// </summary>
-        [DataMember(Name = "delivered_at", EmitDefaultValue = false)]
-        public DeliveredAt DeliveredAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Items
         /// </summary>
         [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = true)]
@@ -149,8 +133,6 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
             sb.Append("  Provider: ").Append(Provider).Append("\n");
             sb.Append("  ProviderShipmentId: ").Append(ProviderShipmentId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  ExpectedAt: ").Append(ExpectedAt).Append("\n");
-            sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

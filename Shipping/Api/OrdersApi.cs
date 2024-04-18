@@ -8,6 +8,7 @@
  */
 
 
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,7 +31,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Create Order Delivery
         /// </summary>
         /// <remarks>
-        /// Create a delivery for a given order.
+        /// Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -43,7 +44,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Create Order Delivery
         /// </summary>
         /// <remarks>
-        /// Create a delivery for a given order.
+        /// Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -80,7 +81,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Get Order Deliveries
         /// </summary>
         /// <remarks>
-        /// Get all the deliveries for a given order.
+        /// Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -92,7 +93,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Get Order Deliveries
         /// </summary>
         /// <remarks>
-        /// Get all the deliveries for a given order.
+        /// Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -109,7 +110,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="orderId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Return&gt;</returns>
-        List<Return> GetOrderReturnsOrdersOrderIdReturnsGet(Guid orderId, int operationIndex = 0);
+        List<Return> GetOrderReturns(Guid orderId, int operationIndex = 0);
 
         /// <summary>
         /// Get Order Returns
@@ -121,7 +122,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="orderId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Return&gt;</returns>
-        ApiResponse<List<Return>> GetOrderReturnsOrdersOrderIdReturnsGetWithHttpInfo(Guid orderId, int operationIndex = 0);
+        ApiResponse<List<Return>> GetOrderReturnsWithHttpInfo(Guid orderId, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -135,7 +136,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Create Order Delivery
         /// </summary>
         /// <remarks>
-        /// Create a delivery for a given order.
+        /// Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -149,7 +150,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Create Order Delivery
         /// </summary>
         /// <remarks>
-        /// Create a delivery for a given order.
+        /// Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -189,7 +190,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Get Order Deliveries
         /// </summary>
         /// <remarks>
-        /// Get all the deliveries for a given order.
+        /// Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -202,7 +203,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// Get Order Deliveries
         /// </summary>
         /// <remarks>
-        /// Get all the deliveries for a given order.
+        /// Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </remarks>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -221,7 +222,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Return&gt;</returns>
-        System.Threading.Tasks.Task<List<Return>> GetOrderReturnsOrdersOrderIdReturnsGetAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<Return>> GetOrderReturnsAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get Order Returns
@@ -234,7 +235,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Return&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Return>>> GetOrderReturnsOrdersOrderIdReturnsGetWithHttpInfoAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<Return>>> GetOrderReturnsWithHttpInfoAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -356,7 +357,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Create Order Delivery Create a delivery for a given order.
+        /// Create Order Delivery Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -370,7 +371,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Create Order Delivery Create a delivery for a given order.
+        /// Create Order Delivery Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -430,7 +431,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Create Order Delivery Create a delivery for a given order.
+        /// Create Order Delivery Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -445,7 +446,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Create Order Delivery Create a delivery for a given order.
+        /// Create Order Delivery Create a delivery for a given order.  :param order_id: the ID of the order to create a delivery for :param request: the request to create the delivery
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -660,7 +661,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Order Deliveries Get all the deliveries for a given order.
+        /// Get Order Deliveries Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -673,7 +674,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Order Deliveries Get all the deliveries for a given order.
+        /// Get Order Deliveries Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -724,7 +725,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Order Deliveries Get all the deliveries for a given order.
+        /// Get Order Deliveries Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -738,7 +739,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         }
 
         /// <summary>
-        /// Get Order Deliveries Get all the deliveries for a given order.
+        /// Get Order Deliveries Get all the deliveries for a given order.  :param order_id: the ID of the order to get the deliveries for
         /// </summary>
         /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
@@ -798,9 +799,9 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="orderId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Return&gt;</returns>
-        public List<Return> GetOrderReturnsOrdersOrderIdReturnsGet(Guid orderId, int operationIndex = 0)
+        public List<Return> GetOrderReturns(Guid orderId, int operationIndex = 0)
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>> localVarResponse = GetOrderReturnsOrdersOrderIdReturnsGetWithHttpInfo(orderId);
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>> localVarResponse = GetOrderReturnsWithHttpInfo(orderId);
             return localVarResponse.Data;
         }
 
@@ -811,7 +812,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="orderId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Return&gt;</returns>
-        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>> GetOrderReturnsOrdersOrderIdReturnsGetWithHttpInfo(Guid orderId, int operationIndex = 0)
+        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>> GetOrderReturnsWithHttpInfo(Guid orderId, int operationIndex = 0)
         {
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
 
@@ -837,7 +838,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
 
             localVarRequestOptions.PathParameters.Add("order_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(orderId)); // path parameter
 
-            localVarRequestOptions.Operation = "OrdersApi.GetOrderReturnsOrdersOrderIdReturnsGet";
+            localVarRequestOptions.Operation = "OrdersApi.GetOrderReturns";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
@@ -845,7 +846,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
             var localVarResponse = this.Client.Get<List<Return>>("/orders/{order_id}/returns", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetOrderReturnsOrdersOrderIdReturnsGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetOrderReturns", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -863,9 +864,9 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Return&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Return>> GetOrderReturnsOrdersOrderIdReturnsGetAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<Return>> GetOrderReturnsAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>> localVarResponse = await GetOrderReturnsOrdersOrderIdReturnsGetWithHttpInfoAsync(orderId, operationIndex, cancellationToken).ConfigureAwait(false);
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>> localVarResponse = await GetOrderReturnsWithHttpInfoAsync(orderId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -877,7 +878,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Return&gt;)</returns>
-        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>>> GetOrderReturnsOrdersOrderIdReturnsGetWithHttpInfoAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Return>>> GetOrderReturnsWithHttpInfoAsync(Guid orderId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
@@ -904,7 +905,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
 
             localVarRequestOptions.PathParameters.Add("order_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(orderId)); // path parameter
 
-            localVarRequestOptions.Operation = "OrdersApi.GetOrderReturnsOrdersOrderIdReturnsGet";
+            localVarRequestOptions.Operation = "OrdersApi.GetOrderReturns";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
@@ -913,7 +914,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetOrderReturnsOrdersOrderIdReturnsGet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetOrderReturns", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

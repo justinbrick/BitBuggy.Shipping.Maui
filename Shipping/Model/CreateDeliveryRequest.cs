@@ -45,10 +45,17 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateDeliveryRequest" /> class.
         /// </summary>
+        /// <param name="recipientAddress">recipientAddress (required).</param>
         /// <param name="deliverySla">deliverySla (required).</param>
         /// <param name="items">items (required).</param>
-        public CreateDeliveryRequest(SLA deliverySla = default(SLA), List<ShipmentItem> items = default(List<ShipmentItem>))
+        public CreateDeliveryRequest(string recipientAddress = default(string), SLA deliverySla = default(SLA), List<ShipmentItem> items = default(List<ShipmentItem>))
         {
+            // to ensure "recipientAddress" is required (not null)
+            if (recipientAddress == null)
+            {
+                throw new ArgumentNullException("recipientAddress is a required property for CreateDeliveryRequest and cannot be null");
+            }
+            this.RecipientAddress = recipientAddress;
             this.DeliverySla = deliverySla;
             // to ensure "items" is required (not null)
             if (items == null)
@@ -57,6 +64,12 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
             }
             this.Items = items;
         }
+
+        /// <summary>
+        /// Gets or Sets RecipientAddress
+        /// </summary>
+        [DataMember(Name = "recipient_address", IsRequired = true, EmitDefaultValue = true)]
+        public string RecipientAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets Items
@@ -72,6 +85,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateDeliveryRequest {\n");
+            sb.Append("  RecipientAddress: ").Append(RecipientAddress).Append("\n");
             sb.Append("  DeliverySla: ").Append(DeliverySla).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");

@@ -42,7 +42,9 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         /// <param name="orderId">orderId (required).</param>
         /// <param name="returnId">returnId (required).</param>
         /// <param name="shipment">shipment (required).</param>
-        public Return(Guid orderId = default(Guid), Guid returnId = default(Guid), Shipment shipment = default(Shipment))
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="items">items (required).</param>
+        public Return(Guid orderId = default(Guid), Guid returnId = default(Guid), Shipment shipment = default(Shipment), DateTime createdAt = default(DateTime), List<ShipmentItem> items = default(List<ShipmentItem>))
         {
             this.OrderId = orderId;
             this.ReturnId = returnId;
@@ -52,6 +54,13 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
                 throw new ArgumentNullException("shipment is a required property for Return and cannot be null");
             }
             this.Shipment = shipment;
+            this.CreatedAt = createdAt;
+            // to ensure "items" is required (not null)
+            if (items == null)
+            {
+                throw new ArgumentNullException("items is a required property for Return and cannot be null");
+            }
+            this.Items = items;
         }
 
         /// <summary>
@@ -73,6 +82,18 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
         public Shipment Shipment { get; set; }
 
         /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "created_at", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Items
+        /// </summary>
+        [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = true)]
+        public List<ShipmentItem> Items { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -83,6 +104,8 @@ namespace BitBuggy.Shipping.Maui.Shipping.Model
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  ReturnId: ").Append(ReturnId).Append("\n");
             sb.Append("  Shipment: ").Append(Shipment).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
