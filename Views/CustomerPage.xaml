@@ -66,7 +66,11 @@
                 VerticalOptions="FillAndExpand">
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.45">
+                <Frame
+                    BackgroundColor="{StaticResource BitGreenLight}"
+                    FlexLayout.Basis="{OnPlatform Auto,
+                                                  WinUI=0.45}"
+                    FlexLayout.Grow="0.45">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
 
                         <!--  Message for no status  -->
