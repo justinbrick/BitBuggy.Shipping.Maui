@@ -30,4 +30,16 @@ public partial class CustomerPage : ContentPage
             _trackingViewModel.SelectedDelivery = null;
         }
     }
+
+    private void OnShipmentSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.Count > 0 && e.CurrentSelection[0] is Shipment shipment && _trackingViewModel.SelectedShipment != shipment)
+        {
+            _trackingViewModel.SelectedShipment = shipment;
+        }
+        else
+        {
+            _trackingViewModel.SelectedShipment = null;
+        }
+    }
 }

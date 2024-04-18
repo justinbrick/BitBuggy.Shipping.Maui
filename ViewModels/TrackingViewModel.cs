@@ -111,7 +111,7 @@ public class TrackingViewModel : INotifyPropertyChanged
     // TEST ONLY THINGS - REMOVE LATER
     private readonly static Random _random = new();
 
-    private IEnumerable<Delivery> GenerateRandomDeliveries()
+    private static IEnumerable<Delivery> GenerateRandomDeliveries()
     {
         return Enumerable
             .Range(0, _random.Next(10))
@@ -126,7 +126,7 @@ public class TrackingViewModel : INotifyPropertyChanged
                 );
             });
     }
-    private IEnumerable<Shipment> GenerateRandomShipments()
+    private static IEnumerable<Shipment> GenerateRandomShipments()
     {
         return Enumerable
             .Range(0, _random.Next(10))
@@ -144,5 +144,17 @@ public class TrackingViewModel : INotifyPropertyChanged
                     ]
                 );
             });
+    }
+
+    private readonly static List<Status> Statuses = [.. Enum.GetValues<Status>()];
+    private static ShipmentStatus GenerateRandomStatus(Shipment shipment)
+    {
+        return new ShipmentStatus(
+            shipmentId: shipment.ShipmentId,
+            expectedAt: shipment.CreatedAt.AddHours(24),
+            updatedAt: DateTime.Now,
+            deliveredAt: DateTime.MinValue,
+            message: Statuses[_random.Next(Statuses.Count)]
+        );
     }
 }

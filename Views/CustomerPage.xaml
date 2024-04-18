@@ -6,6 +6,7 @@
     xmlns:models="clr-namespace:BitBuggy.Shipping.Maui.Shipping.Model"
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
     xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
+    x:Name="Page"
     Title="CustomerPage"
     x:DataType="viewmodels:TrackingViewModel"
     Appearing="ContentPage_Appearing">
@@ -66,17 +67,41 @@
                 <!--  Status Frame  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow="0.45">
                     <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
+
+                        <!--  Message for no status  -->
+                        <Label
+                            Margin="25"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding SelectedShipment, Converter={StaticResource InvertedNullBoolConverter}}"
+                            Text="Select a shipment to view shipment status" />
+
                         <!--  Top to Bottom Status  -->
-                        <VerticalStackLayout Margin="10" VerticalOptions="Start">
+                        <VerticalStackLayout
+                            Margin="10"
+                            BindingContext="{Binding SelectedShipment}"
+                            IsVisible="{Binding Source={x:Reference Page}, Path=BindingContext.SelectedShipment, Converter={StaticResource NullBoolConverter}}">
+
                             <Label
                                 Margin="10"
+                                x:DataType="models:Shipment"
                                 FontSize="Title"
                                 HorizontalOptions="Center"
-                                Text="Item # And Name"
-                                TextColor="{StaticResource BitGoldLight}" />
+                                TextColor="{StaticResource BitGoldLight}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="(" />
+                                        <Span Text="{Binding Items.Count}" />
+                                        <Span Text=" items) " />
+                                        <Span Text="Shipment - " />
+                                        <Span Text="{Binding CreatedAt}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
 
                             <ImageButton
                                 Margin="40"
+                                x:DataType="models:Shipment"
                                 Aspect="AspectFit"
                                 BackgroundColor="{StaticResource BitGreenDark}"
                                 BorderColor="{StaticResource BitGoldLight}"
@@ -87,6 +112,7 @@
 
                             <!--  Status Buttons  -->
                             <StackLayout
+                                x:DataType="models:Shipment"
                                 HorizontalOptions="Center"
                                 Orientation="Horizontal"
                                 VerticalOptions="Start">
@@ -98,10 +124,6 @@
                                 <Button Style="{StaticResource StatusStyle}" />
                             </StackLayout>
                         </VerticalStackLayout>
-
-
-                        <!--  Your content here  -->
-
                     </StackLayout>
                 </Frame>
 
@@ -148,6 +170,8 @@
                                 IsVisible="{Binding SelectedDelivery, Converter={StaticResource NullBoolConverter}}"
                                 ItemsSource="{Binding SelectedDelivery.Shipments}"
                                 MaximumHeightRequest="500"
+                                SelectionChanged="OnShipmentSelectionChanged"
+                                SelectionMode="Single"
                                 VerticalScrollBarVisibility="Always" />
                         </Border>
                     </Grid>
