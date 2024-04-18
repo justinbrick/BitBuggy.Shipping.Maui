@@ -23,10 +23,10 @@
             </Style>
 
             <Style x:Key="StatusStyle" TargetType="Button">
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="Background" Value="{StaticResource BitGreenDark}" />
                 <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
                 <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="WidthRequest" Value="100" />
             </Style>
             <viewmodels:ShipmentStatusViewModel x:Key="CurrentStatusModel" x:Name="CurrentStatus" />
         </ResourceDictionary>
@@ -84,30 +84,30 @@
                         <!--  The Status Container  -->
                         <StackLayout Margin="10" IsVisible="{Binding SelectedShipment, Converter={StaticResource NullBoolConverter}}">
 
+                            <!--  Shipment Title / Description  -->
+                            <Label
+                                Margin="10"
+                                FontSize="Title"
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource BitGoldLight}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="(" />
+                                        <Span Text="{Binding SelectedShipment.Items.Count}" />
+                                        <Span Text=" items) " />
+                                        <Span Text="Shipment - " />
+                                        <Span Text="{Binding SelectedShipment.CreatedAt}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
                             <!--  If the status has not yet loaded, then a message will appear, stating this.  -->
-                            <StackLayout IsVisible="{Binding SelectedShipmentStatus, Converter={StaticResource NullBoolConverter}}">
+                            <StackLayout IsVisible="{Binding SelectedShipmentStatus, Converter={StaticResource InvertedNullBoolConverter}}">
                                 <Label Text="Status is loading..." />
                             </StackLayout>
 
                             <!--  If the message is loaded, this will appear, showing the details.  -->
                             <StackLayout>
-
-                                <!--  Shipment Title / Description  -->
-                                <Label
-                                    Margin="10"
-                                    FontSize="Title"
-                                    HorizontalOptions="Center"
-                                    TextColor="{StaticResource BitGoldLight}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="(" />
-                                            <Span Text="{Binding SelectedShipment.Items.Count}" />
-                                            <Span Text=" items) " />
-                                            <Span Text="Shipment - " />
-                                            <Span Text="{Binding SelectedShipment.CreatedAt}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
 
                                 <!--  Image of the Shipment  -->
                                 <ImageButton
@@ -124,14 +124,21 @@
                                 <StackLayout
                                     HorizontalOptions="Center"
                                     Orientation="Horizontal"
-                                    VerticalOptions="Start">
+                                    Spacing="2">
 
                                     <!--  Center for both  -->
-                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Pending}}" Style="{StaticResource StatusStyle}" />
-                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Shipped}}" Style="{StaticResource StatusStyle}" />
-                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=InTransit}}" Style="{StaticResource StatusStyle}" />
-                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Delivered}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Pending}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Shipped}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=InTransit}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Delivered}}" Style="{StaticResource StatusStyle}" />
                                 </StackLayout>
+
+                                <!--  A message for the current status  -->
+                                <Label
+                                    Margin="10"
+                                    FontSize="Large"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding SelectedShipmentStatus.Message}" />
                             </StackLayout>
 
                         </StackLayout>
@@ -158,7 +165,7 @@
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout x:DataType="models:Delivery">
-                                            <Label>
+                                            <Label FontSize="Medium">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="Delivery - " />
