@@ -114,22 +114,8 @@
                         
                         <!--  Top to Bottom Status  -->
                         <VerticalStackLayout Margin="10" VerticalOptions="Start">
-                            <Label
-                                Margin="10"
-                                FontSize="Title"
-                                HorizontalOptions="Center"
-                                Text="Item # And Name"
-                                TextColor="{StaticResource BitGoldLight}" />
-
-                            <ImageButton
-                                Margin="40"
-                                Aspect="AspectFit"
-                                BackgroundColor="{StaticResource BitGreenDark}"
-                                BorderColor="{StaticResource BitGoldLight}"
-                                BorderWidth="2"
-                                HorizontalOptions="Center"
-                                Source="productimagehuge.png"
-                                VerticalOptions="Center" />
+                           
+                           
 
                             <!--  Status Buttons  -->
                             <StackLayout
@@ -138,10 +124,7 @@
                                 VerticalOptions="Start">
 
                                 <!--  Center for both  -->
-                                <Button Style="{StaticResource StatusStyle}" />
-                                <Button Style="{StaticResource StatusStyle}" />
-                                <Button Style="{StaticResource StatusStyle}" />
-                                <Button Style="{StaticResource StatusStyle}" />
+                               
                             </StackLayout>
                         </VerticalStackLayout>
 
