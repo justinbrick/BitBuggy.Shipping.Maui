@@ -13,11 +13,12 @@ public class TrackingViewModel : INotifyPropertyChanged
 
     private readonly ShippingService _shipping;
     private ObservableCollection<Shipping.Model.Delivery> _deliveryList = [];
-    private ShipmentStatus? _status;
     private Delivery? _selectedDelivery;
     private Shipment? _selectedShipment;
+    private ShipmentStatus? _status;
 
-    public ShipmentStatus? Status
+
+    public ShipmentStatus? SelectedShipmentStatus
     {
         get => _status;
         set
@@ -52,6 +53,7 @@ public class TrackingViewModel : INotifyPropertyChanged
             {
                 _selectedShipment = value;
                 OnPropertyChanged();
+                GetShipmentStatus.Execute(null);
             }
         }
     }
@@ -77,6 +79,7 @@ public class TrackingViewModel : INotifyPropertyChanged
 
         RetrieveDeliveries = new Command(async () => await RetrieveDeliveriesAsync());
         NextOrder = new Command(async () => await NextOrderAsync());
+        GetShipmentStatus = new Command(async () => await GetShipmentStatusAsync());
     }
 
     protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
@@ -87,11 +90,24 @@ public class TrackingViewModel : INotifyPropertyChanged
     //public ICommand GetName { get; }
     public ICommand RetrieveDeliveries { get; }
     public ICommand NextOrder { get; }
+    public ICommand GetShipmentStatus { get; }
 
 
     private async Task NextOrderAsync()
     {
         throw new NotImplementedException();
+    }
+
+    private async Task GetShipmentStatusAsync()
+    {
+        // TODO: API Implementation
+        if (SelectedShipment is null)
+        {
+            SelectedShipmentStatus = null;
+            return;
+        }
+
+        SelectedShipmentStatus = GenerateRandomStatus(SelectedShipment);
     }
 
     public async Task RetrieveDeliveriesAsync()

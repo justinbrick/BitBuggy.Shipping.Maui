@@ -3,6 +3,7 @@
     x:Class="BitBuggy.Shipping.Maui.Views.CustomerPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:BitBuggy.Shipping.Maui.Converters"
     xmlns:models="clr-namespace:BitBuggy.Shipping.Maui.Shipping.Model"
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
     xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
@@ -76,54 +77,60 @@
                             IsVisible="{Binding SelectedShipment, Converter={StaticResource InvertedNullBoolConverter}}"
                             Text="Select a shipment to view shipment status" />
 
-                        <!--  Top to Bottom Status  -->
-                        <VerticalStackLayout
-                            Margin="10"
-                            BindingContext="{Binding SelectedShipment}"
-                            IsVisible="{Binding Source={x:Reference Page}, Path=BindingContext.SelectedShipment, Converter={StaticResource NullBoolConverter}}">
+                        <!--  The Status Container  -->
+                        <StackLayout Margin="10" IsVisible="{Binding SelectedShipment, Converter={StaticResource NullBoolConverter}}">
 
-                            <Label
-                                Margin="10"
-                                x:DataType="models:Shipment"
-                                FontSize="Title"
-                                HorizontalOptions="Center"
-                                TextColor="{StaticResource BitGoldLight}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="(" />
-                                        <Span Text="{Binding Items.Count}" />
-                                        <Span Text=" items) " />
-                                        <Span Text="Shipment - " />
-                                        <Span Text="{Binding CreatedAt}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-
-                            <ImageButton
-                                Margin="40"
-                                x:DataType="models:Shipment"
-                                Aspect="AspectFit"
-                                BackgroundColor="{StaticResource BitGreenDark}"
-                                BorderColor="{StaticResource BitGoldLight}"
-                                BorderWidth="2"
-                                HorizontalOptions="Center"
-                                Source="productimagehuge.png"
-                                VerticalOptions="Center" />
-
-                            <!--  Status Buttons  -->
-                            <StackLayout
-                                x:DataType="models:Shipment"
-                                HorizontalOptions="Center"
-                                Orientation="Horizontal"
-                                VerticalOptions="Start">
-
-                                <!--  Center for both  -->
-                                <Button Style="{StaticResource StatusStyle}" />
-                                <Button Style="{StaticResource StatusStyle}" />
-                                <Button Style="{StaticResource StatusStyle}" />
-                                <Button Style="{StaticResource StatusStyle}" />
+                            <!--  If the status has not yet loaded, then a message will appear, stating this.  -->
+                            <StackLayout IsVisible="{Binding SelectedShipmentStatus, Converter={StaticResource NullBoolConverter}}">
+                                <Label Text="Status is loading..." />
                             </StackLayout>
-                        </VerticalStackLayout>
+
+                            <!--  If the message is loaded, this will appear, showing the details.  -->
+                            <StackLayout>
+
+                                <!--  Shipment Title / Description  -->
+                                <Label
+                                    Margin="10"
+                                    FontSize="Title"
+                                    HorizontalOptions="Center"
+                                    TextColor="{StaticResource BitGoldLight}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="(" />
+                                            <Span Text="{Binding SelectedShipment.Items.Count}" />
+                                            <Span Text=" items) " />
+                                            <Span Text="Shipment - " />
+                                            <Span Text="{Binding SelectedShipment.CreatedAt}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <!--  Image of the Shipment  -->
+                                <ImageButton
+                                    Margin="40"
+                                    Aspect="AspectFit"
+                                    BackgroundColor="{StaticResource BitGreenDark}"
+                                    BorderColor="{StaticResource BitGoldLight}"
+                                    BorderWidth="2"
+                                    HorizontalOptions="Center"
+                                    Source="productimagehuge.png"
+                                    VerticalOptions="Center" />
+
+                                <!--  Status Buttons  -->
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Start">
+
+                                    <!--  Center for both  -->
+                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Pending}}" Style="{StaticResource StatusStyle}" />
+                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Shipped}}" Style="{StaticResource StatusStyle}" />
+                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=InTransit}}" Style="{StaticResource StatusStyle}" />
+                                    <Button BackgroundColor="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Delivered}}" Style="{StaticResource StatusStyle}" />
+                                </StackLayout>
+                            </StackLayout>
+
+                        </StackLayout>
                     </StackLayout>
                 </Frame>
 
