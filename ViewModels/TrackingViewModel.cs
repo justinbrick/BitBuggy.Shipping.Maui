@@ -14,6 +14,8 @@ public class TrackingViewModel : INotifyPropertyChanged
     private readonly ShippingService _shipping;
     private ObservableCollection<Shipping.Model.Delivery> _deliveryList = [];
     private ShipmentStatus? _status;
+    private Delivery? _selectedDelivery;
+    private Shipment? _selectedShipment;
 
     public ShipmentStatus? Status
     {
@@ -23,6 +25,32 @@ public class TrackingViewModel : INotifyPropertyChanged
             if (_status != value)
             {
                 _status = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public Delivery? SelectedDelivery
+    {
+        get => _selectedDelivery;
+        set
+        {
+            if (_selectedDelivery != value)
+            {
+                _selectedDelivery = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public Shipment? SelectedShipment
+    {
+        get => _selectedShipment;
+        set
+        {
+            if (_selectedShipment != value)
+            {
+                _selectedShipment = value;
                 OnPropertyChanged();
             }
         }
@@ -75,28 +103,46 @@ public class TrackingViewModel : INotifyPropertyChanged
         //}
 
         // await me.GetPersonalDeliveriesAsync();
-        List<Delivery> deliveryList = [
-            new Delivery(
-                deliveryId: Guid.NewGuid(),
-                createdAt: DateTime.Now,
-                deliverySla: SLA.Standard,
-                orderId: Guid.NewGuid(),
-                shipments: [
-                    new Shipment(
-                        shipmentId: Guid.NewGuid(),
-                        fromAddress: "From Address",
-                        shippingAddress: "Shipping Address",
-                        provider: Provider.Ups,
-                        providerShipmentId: "Provider Shipment Id",
-                        createdAt: DateTime.Now,
-                        items: [
-                            new ShipmentItem(1, 5)
-                        ]
-                    )
-                ]
-            )
-        ];
+        List<Delivery> deliveryList = GenerateRandomDeliveries().ToList();
 
         DeliveryList = new(deliveryList);
+    }
+
+    // TEST ONLY THINGS - REMOVE LATER
+    private readonly static Random _random = new();
+
+    private IEnumerable<Delivery> GenerateRandomDeliveries()
+    {
+        return Enumerable
+            .Range(0, _random.Next(10))
+            .Select(_ =>
+            {
+                return new Delivery(
+                    deliveryId: Guid.NewGuid(),
+                    orderId: Guid.NewGuid(),
+                    createdAt: DateTime.Now.AddSeconds(_random.NextInt64(50000)),
+                    deliverySla: SLA.Standard,
+                    shipments: GenerateRandomShipments().ToList()
+                );
+            });
+    }
+    private IEnumerable<Shipment> GenerateRandomShipments()
+    {
+        return Enumerable
+            .Range(0, _random.Next(10))
+            .Select(_ =>
+            {
+                return new Shipment(
+                    shipmentId: Guid.NewGuid(),
+                    fromAddress: "From Address",
+                    shippingAddress: "Shipping Address",
+                    provider: Provider.Ups,
+                    providerShipmentId: "Provider Shipment Id",
+                    createdAt: DateTime.Now,
+                    items: [
+                        new ShipmentItem(1, 5)
+                    ]
+                );
+            });
     }
 }

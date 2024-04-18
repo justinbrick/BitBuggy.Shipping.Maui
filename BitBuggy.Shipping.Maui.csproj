@@ -68,7 +68,6 @@
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-        <PackageReference Include="MiNET" Version="1.0.2304" />
         <PackageReference Include="Polly" Version="8.3.1" />
         <PackageReference Include="RestSharp" Version="110.2.0" />
     </ItemGroup>
@@ -76,9 +75,6 @@
     <ItemGroup>
       <Compile Update="Views\AccountPage.xaml.cs">
         <DependentUpon>AccountPage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Views\DeliveryDetailView.xaml.cs">
-        <DependentUpon>DeliveryDetailView.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 
@@ -96,12 +92,6 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\EmployeeView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Views\DeliveryDetailView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Views\ShipmentDetailView.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
     </ItemGroup>
