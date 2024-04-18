@@ -10,14 +10,29 @@ using System.Text.Json;
 
 
 using System.Windows.Input;
+using System.Threading;
+using BitBuggy.Shipping.Maui.Shipping.Model;
 
 namespace BitBuggy.Shipping.Maui.ViewModels;
 
+//onloadedevent
 class ShipmentListViewModel : INotifyPropertyChanged
 {
     private readonly IPublicClientApplication? _clientApplication;
     public event PropertyChangedEventHandler? PropertyChanged;
-    
+
+    private async void ContentPage_Appearing() //when the page is loaded
+    {
+        //retrieve account shipments
+        List<Shipment> allShipments = new List<Shipment>();
+        
+        foreach (Shipment shipment in allShipments)
+        {
+            Shipments.Add(shipment);
+        }
+
+        //page number? unsure how to determine
+    }
     protected void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -27,6 +42,7 @@ class ShipmentListViewModel : INotifyPropertyChanged
     public ICommand RetrieveOrders { get; }
     public ICommand NextOrder { get; }
     public ICommand GetAccessToken { get; }
+    
     public bool SignedIn
     {
         get => _account is not null;
@@ -50,17 +66,46 @@ class ShipmentListViewModel : INotifyPropertyChanged
 
     private string[] _orders;
 
+ /*   public void AddShipment(string orderID, IAccount? account)
+    {
+        UUID shipmentID;
+        string fromAddress;
+        string shippingAddress;
+        Provider provider;
+        string providerShipmentID;
+        DateTime createdAt;
+        DateTime deliveredAt;
+        List<ShipmentItem> items;
+        //Shipment.Status
 
-
+        foreach (var orderid in _orders)
+        {
+            Shipment shipment = new Shipment(shipmentID, fromAddress, shippingAddress, provider, providerShipmentID, createdAt,deliveredAt, items ); 
+            Shipments.Add(shipment);
+        }
+    }
+ */
+    
+    public async Task PopulateShipments()
+    {
+        try
+        {
+            
+        } catch (Exception ex)
+        {
+            
+        }
+    }
+    //collection view
+    //page number
     public ShipmentListViewModel(IPublicClientApplication clientApplication)
     {
         _clientApplication = clientApplication; //retrieve access token from here
-        GetAccessToken = new Command(async () => await GetAccessTokenAsync());
-        RetrieveOrders = new Command(async () => await RetrieveOrdersAsync());
-        NextOrder = new Command(async () => await NextOrderAsync());
+        
+        
     }
 
-    private async Task GetAccessTokenAsync()
+    /*private async Task GetAccessTokenAsync()
     {
         try
         {
@@ -75,9 +120,9 @@ class ShipmentListViewModel : INotifyPropertyChanged
 
 
         }
-    }
+    }*/
 
-    private async Task NextOrderAsync()
+    /*private async Task NextOrderAsync()
     {
         throw new NotImplementedException();
     }
@@ -97,7 +142,9 @@ class ShipmentListViewModel : INotifyPropertyChanged
             return;
 
         } 
-    }
+    }*/
+
+    
 
     private ObservableCollection<Shipping.Model.Shipment> _shipments = new ObservableCollection<Shipping.Model.Shipment>(); //add order(s) that should be visible on first screen, clear for next page of orders
     public ObservableCollection<Shipping.Model.Shipment> Shipments
