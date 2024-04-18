@@ -130,7 +130,7 @@ public class TrackingViewModel : INotifyPropertyChanged
     private static IEnumerable<Delivery> GenerateRandomDeliveries()
     {
         return Enumerable
-            .Range(0, _random.Next(10))
+            .Range(0, _random.Next(1, 10))
             .Select(_ =>
             {
                 return new Delivery(
@@ -145,7 +145,7 @@ public class TrackingViewModel : INotifyPropertyChanged
     private static IEnumerable<Shipment> GenerateRandomShipments()
     {
         return Enumerable
-            .Range(0, _random.Next(10))
+            .Range(0, _random.Next(1, 10))
             .Select(_ =>
             {
                 return new Shipment(
