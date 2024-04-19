@@ -38,19 +38,23 @@
 
                     <!--  BitBuggy Logo  -->
                     <Image
-                        Margin="100,80,100,0"
+                        Margin="30,30,0,0"
                         Aspect="AspectFit"
-                        HeightRequest="150"
-                        HorizontalOptions="Start"
+                        HorizontalOptions="Center"
                         Source="bit_buggy_image.png"
-                        VerticalOptions="End" />
+                        VerticalOptions="Center"
+                        HeightRequest="150"
+                        WidthRequest="150"/>
 
+
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
 
                     <Label
-                        Margin="280,100,10,0"
+                     
                         FontAttributes="Bold"
                         FontSize="Medium"
                         HorizontalOptions="Center"
+                        VerticalOptions="Center"
                         Text="Select Status: "
                         TextColor="{StaticResource BitGoldLight}" />
 
@@ -60,11 +64,12 @@
                         BackgroundColor="White"
                         ItemsSource="{Static viewmodels:EmployeeSearchViewModel.StatusChoices}"
                         VerticalOptions="CenterAndExpand"
-                        WidthRequest="300" />
+                        HorizontalOptions="Center"
+                        WidthRequest="300"
+                        Margin="0,0,0,30"/>
+                    
 
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+               
 
 
                 <!--  Label for the Shipment Tracking Interface  -->
@@ -75,6 +80,8 @@
                     Text="Tracking ID/Number"
                     TextColor="{StaticResource BitGoldLight}" />
 
+
+                        <HorizontalStackLayout>
                 <Entry
                     WidthRequest="300"
                     Placeholder="Tracking ID/Number"
@@ -86,14 +93,23 @@
                         Text="Search" BackgroundColor="{StaticResource BitGoldLight}"
                         TextColor="{StaticResource BitGreenDark}"
                         FontAttributes="Bold"
-                        Margin="10,0,0,0">
+                        Margin="0,0,0,0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
 
 
                     </Button>
-                
-                
-                
-            </StackLayout>
+
+                        </HorizontalStackLayout>
+
+
+
+                    </StackLayout>
+                    
+
+
+
+                </StackLayout>
 
             </StackLayout>
 
