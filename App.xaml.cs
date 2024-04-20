@@ -1,11 +1,13 @@
-﻿namespace BitBuggy.Shipping.Maui;
+﻿using BitBuggy.Shipping.Maui.ViewModels;
+
+namespace BitBuggy.Shipping.Maui;
 
 public partial class App : Application
 {
-    public App()
+    public App(AccountViewModel accountViewModel)
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
+        MainPage = new AppShell(accountViewModel);
     }
 }
