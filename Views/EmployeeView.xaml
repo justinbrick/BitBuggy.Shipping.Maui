@@ -86,7 +86,7 @@
                 <Entry
                     WidthRequest="300"
                     Placeholder="Tracking ID/Number"
-                    Text="{Binding TrackingID}"
+                    Text="{Binding TrackingId}"
                     BackgroundColor="White"
                     BindingContext="0"
                     Margin="0"/>

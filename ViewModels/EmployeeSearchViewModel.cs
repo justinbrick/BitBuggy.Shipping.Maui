@@ -14,12 +14,14 @@ public class EmployeeSearchViewModel
     public event PropertyChangedEventHandler? PropertyChanged;
 
     private readonly ShippingService _shipping;
+    private string _trackingId;
 
     public ICommand SearchDelivery { get; }
     public static string[] StatusChoices { get; } = Enum
         .GetNames(typeof(Shipping.Model.Status)) 
         .Select(name => string.Join("", name.Select(c => char.IsUpper(c) ? " " + c : c.ToString())).TrimStart(' '))
         .ToArray();
+    public string TrackingId { get => _trackingId; set => _trackingId = value; }
 
     public async Task SearchDeliveryAsync()
     {
