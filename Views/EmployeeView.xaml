@@ -86,11 +86,13 @@
                 <Entry
                     WidthRequest="300"
                     Placeholder="Tracking ID/Number"
+                    Text="{Binding TrackingID}"
                     BackgroundColor="White"
                     BindingContext="0"
                     Margin="0"/>
 
-                    <Button 
+                    <Button
+                        Command="{Binding SearchDelivery}"
                         Text="Search" BackgroundColor="{StaticResource BitGoldLight}"
                         TextColor="{StaticResource BitGreenDark}"
                         FontAttributes="Bold"

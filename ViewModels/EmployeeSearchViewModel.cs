@@ -23,7 +23,13 @@ public class EmployeeSearchViewModel
 
     public async Task SearchDeliveryAsync()
     {
+        //MeApi? me = await _shipping.GetMeAsync();
+        //if (me is null)
+        //{
+        //    return;
+        //}
 
+        // await me.GetDeliveriesAsync();
     }
 
     public EmployeeSearchViewModel(ShippingService shipping) 
