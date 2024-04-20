@@ -11,4 +11,9 @@ public partial class EmployeeView : ContentPage
         BindingContext = _searchViewModel;
 		InitializeComponent();
 	}
+
+    private async void EmployeePage_Appearing(object sender, EventArgs e)
+    {
+        await _searchViewModel.SearchDeliveryAsync();
+    }
 }
