@@ -27,14 +27,11 @@
 
     <ScrollView Background="{StaticResource BitGreenLight}" VerticalOptions="FillAndExpand">
 
-        <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout>
             <!--  Hero  -->
-            <StackLayout
-                Background="{StaticResource BitGreenLight}"
-                HeightRequest="300"
-                Orientation="Vertical">
+          
 
-                <StackLayout HorizontalOptions="Start" Orientation="{OnPlatform Horizontal, Android=Vertical, iOS=Vertical}">
+                <FlexLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Direction="{OnPlatform Row, Android=Column, iOS=Column}" FlexLayout.Grow=".40">
 
 
                     <!--  BitBuggy Logo  -->
@@ -67,6 +64,8 @@
                             ItemsSource="{Static viewmodels:EmployeeSearchViewModel.StatusChoices}"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="300" />
+                        
+                        
 
 
 
@@ -81,28 +80,29 @@
                             TextColor="{StaticResource BitGoldLight}" />
 
 
-                        <HorizontalStackLayout>
-                <Entry
-                    WidthRequest="300"
-                    Placeholder="Tracking ID/Number"
-                    Text="{Binding TrackingId}"
-                    BackgroundColor="White"
-                    BindingContext="0"
-                    Margin="0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Entry
+                                    WidthRequest="230"
+                                    Placeholder="Tracking ID/Number"
+                                    Text="{Binding TrackingId}"
+                                    BackgroundColor="White"
+                                    BindingContext="0"
+                                    Margin="0"
+                                    />
 
-                    <Button
-                        Command="{Binding SearchDelivery}"
-                        Text="Search" BackgroundColor="{StaticResource BitGoldLight}"
-                        TextColor="{StaticResource BitGreenDark}"
-                        FontAttributes="Bold"
-                        Margin="0,0,0,0"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center">
+                                    <Button
+                                    Command="{Binding SearchDelivery}"
+                                    Text="Search" BackgroundColor="{StaticResource BitGoldLight}"
+                                    TextColor="{StaticResource BitGreenDark}"
+                                    FontAttributes="Bold"
+                                    Margin="0,0,0,0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
 
 
-                    </Button>
+                                 </Button>
 
-                        </HorizontalStackLayout>
+                    </StackLayout>
 
 
 
@@ -111,9 +111,9 @@
 
 
 
-                </StackLayout>
+                </FlexLayout>
 
-            </StackLayout>
+            
 
 
             <FlexLayout
@@ -121,12 +121,13 @@
                                        Android=Column,
                                        iOS=Column}"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="FillAndExpand"
+                FlexLayout.Grow=".60">
 
 
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow=".55">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}">
                     <Border
                         BackgroundColor="{StaticResource BitGoldLight}"
                         Stroke="{StaticResource BitGoldLight}"
