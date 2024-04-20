@@ -77,6 +77,9 @@
       <Compile Update="Views\AccountPage.xaml.cs">
         <DependentUpon>AccountPage.xaml</DependentUpon>
       </Compile>
+      <Compile Update="Views\TrackingPage.xaml.cs">
+        <DependentUpon>TrackingPage.xaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -89,7 +92,7 @@
       <MauiXaml Update="Views\AccountPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\CustomerPage.xaml">
+      <MauiXaml Update="Views\TrackingPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\EmployeeView.xaml">

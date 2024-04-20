@@ -4,17 +4,17 @@ using BitBuggy.Shipping.Maui.ViewModels;
 
 namespace BitBuggy.Shipping.Maui.Views;
 
-public partial class CustomerPage : ContentPage
+public partial class TrackingPage : ContentPage
 {
     private readonly TrackingViewModel _tracking;
-	public CustomerPage(TrackingViewModel tracking)
+	public TrackingPage(TrackingViewModel tracking)
 	{
         _tracking = tracking;
         BindingContext = _tracking;
 		InitializeComponent();
     }
 
-    private async void ContentPage_Appearing(object sender, EventArgs e)
+    private async void OnAppearing(object sender, EventArgs e)
     {
         await _tracking.RetrieveDeliveriesAsync();
     }

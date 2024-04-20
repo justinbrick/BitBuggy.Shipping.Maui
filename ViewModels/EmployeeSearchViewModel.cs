@@ -15,6 +15,8 @@ public class EmployeeSearchViewModel
 
     private readonly ShippingService _shipping;
     private string _trackingId;
+    private string _shipmentSearch = string.Empty;
+    private string _deliverySearch = string.Empty;
 
     public ICommand SearchDelivery { get; }
     public static string[] StatusChoices { get; } = Enum

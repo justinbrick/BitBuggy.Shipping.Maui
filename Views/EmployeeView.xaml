@@ -34,52 +34,51 @@
                 HeightRequest="300"
                 Orientation="Vertical">
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
 
 
                     <!--  BitBuggy Logo  -->
                     <Image
                         Margin="30,30,0,0"
                         Aspect="AspectFit"
+                        HeightRequest="150"
                         HorizontalOptions="Center"
                         Source="bit_buggy_image.png"
                         VerticalOptions="Center"
-                        HeightRequest="150"
-                        WidthRequest="150"/>
+                        WidthRequest="150" />
 
 
                     <StackLayout Orientation="Vertical" VerticalOptions="Center">
 
-                    <Label
-                     
-                        FontAttributes="Bold"
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="Select Status: "
-                        TextColor="{StaticResource BitGoldLight}" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="Select Status: "
+                            TextColor="{StaticResource BitGoldLight}"
+                            VerticalOptions="Center" />
 
 
 
-                    <Picker
-                        BackgroundColor="White"
-                        ItemsSource="{Static viewmodels:EmployeeSearchViewModel.StatusChoices}"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center"
-                        WidthRequest="300"
-                        Margin="0,0,0,30"/>
-                    
-
-               
+                        <Picker
+                            Margin="0,0,0,30"
+                            BackgroundColor="White"
+                            HorizontalOptions="Center"
+                            ItemsSource="{Static viewmodels:EmployeeSearchViewModel.StatusChoices}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="300" />
 
 
-                <!--  Label for the Shipment Tracking Interface  -->
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    Text="Tracking ID/Number"
-                    TextColor="{StaticResource BitGoldLight}" />
+
+
+
+                        <!--  Label for the Shipment Tracking Interface  -->
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="Tracking ID/Number"
+                            TextColor="{StaticResource BitGoldLight}" />
 
 
                         <HorizontalStackLayout>
@@ -108,7 +107,7 @@
 
 
                     </StackLayout>
-                    
+
 
 
 
@@ -128,29 +127,32 @@
 
                 <!--  Status Frame  -->
                 <Frame BackgroundColor="{StaticResource BitGreenLight}" FlexLayout.Grow=".55">
-                    <Border StrokeThickness="10" BackgroundColor="{StaticResource BitGoldLight}" Stroke="{StaticResource BitGoldLight}">
-                    <StackLayout BackgroundColor="{StaticResource BitGreenDark}" >
-                        
-                        <!--  Top to Bottom Status  -->
-                        <VerticalStackLayout Margin="10" VerticalOptions="Start">
-                           
-                           
+                    <Border
+                        BackgroundColor="{StaticResource BitGoldLight}"
+                        Stroke="{StaticResource BitGoldLight}"
+                        StrokeThickness="10">
+                        <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
 
-                            <!--  Status Buttons  -->
-                            <StackLayout
-                                HorizontalOptions="Center"
-                                Orientation="Horizontal"
-                                VerticalOptions="Start">
-
-                                <!--  Center for both  -->
-                               
-                            </StackLayout>
-                        </VerticalStackLayout>
+                            <!--  Top to Bottom Status  -->
+                            <VerticalStackLayout Margin="10" VerticalOptions="Start">
 
 
-                        <!--  Your content here  -->
 
-                    </StackLayout>
+                                <!--  Status Buttons  -->
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Start">
+
+                                    <!--  Center for both  -->
+
+                                </StackLayout>
+                            </VerticalStackLayout>
+
+
+                            <!--  Your content here  -->
+
+                        </StackLayout>
                     </Border>
                 </Frame>
             </FlexLayout>

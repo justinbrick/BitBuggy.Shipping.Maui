@@ -10,10 +10,6 @@
     Shell.FlyoutBehavior="Disabled">
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate views:MainPage}"
-            Route="home" />
 
         <ShellContent
             Title="Account"
@@ -21,8 +17,8 @@
             Route="account" />
 
         <ShellContent
-            Title="Customer"
-            ContentTemplate="{DataTemplate views:CustomerPage}"
+            Title="Tracking"
+            ContentTemplate="{DataTemplate views:TrackingPage}"
             Route="customer" />
 
         <ShellContent

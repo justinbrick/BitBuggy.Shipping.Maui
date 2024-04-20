@@ -63,11 +63,11 @@ public static class MauiProgram
 
         // Pages
         builder.Services
-            .AddTransient<MainPage>()
             .AddTransient<AccountPage>()
-            .AddTransient<CustomerPage>()
+            .AddTransient<TrackingPage>()
             .AddTransient<EmployeeView>();
-               
+
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
