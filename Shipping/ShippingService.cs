@@ -29,7 +29,11 @@ public sealed class ShippingService(AccountAuthorizationService accountAuthoriza
         return new Configuration
         {
             AccessToken = authenticationResult.AccessToken,
-            BasePath = "https://localhost:8000"
+            DefaultHeaders = new Dictionary<string, string>
+            {
+                ["Authorization"] = $"Bearer {authenticationResult.AccessToken}"
+            },
+            BasePath = "http://localhost:8000"
         };
     }
 
