@@ -34,7 +34,7 @@
                 HeightRequest="300"
                 Orientation="Vertical">
 
-                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                <StackLayout HorizontalOptions="Start" Orientation="{OnPlatform Horizontal, Android=Vertical, iOS=Vertical}">
 
 
                     <!--  BitBuggy Logo  -->
