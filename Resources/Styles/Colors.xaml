@@ -8,7 +8,8 @@
 
     <Color x:Key="BitGreenLight">#38785e</Color>
     <Color x:Key="BitGreenDark">#053426</Color>
-    <Color x:Key="BitGoldLight">#ad8d49</Color>
+    <Color x:Key="BitGoldDark">#ad8d49</Color>
+    <Color x:Key="BitGoldLight">#c2a25d</Color>
 
     <!-- One thing that confused me, but I think this is the proper way to interpret this. -->
     <!-- Primary Dark, is the primary color when you're in dark mode. You want this to be lighter for greater contrast. Vice versa. -->
