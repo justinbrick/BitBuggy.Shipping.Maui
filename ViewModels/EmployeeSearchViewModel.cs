@@ -14,7 +14,7 @@ public class EmployeeSearchViewModel
     public event PropertyChangedEventHandler? PropertyChanged;
 
     private readonly ShippingService _shipping;
-    private string _trackingId;
+    private string _trackingId = string.Empty;
     private string _shipmentSearch = string.Empty;
     private string _deliverySearch = string.Empty;
 
