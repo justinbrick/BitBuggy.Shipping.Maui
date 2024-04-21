@@ -60,8 +60,10 @@ public static class MauiProgram
                     new("ProductGroup", "ShippingApp")
                 ).Build();
 
+#if WINDOWS
             MsalCacheHelper helper = MsalCacheHelper.CreateAsync(cacheProperties).Result;
-            helper.RegisterCache(app.UserTokenCache);
+                        helper.RegisterCache(app.UserTokenCache);
+#endif
             return app;
         });
 
