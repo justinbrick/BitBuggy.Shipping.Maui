@@ -25,13 +25,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView Background="{StaticResource BitGreenLight}" VerticalOptions="FillAndExpand">
+    <ScrollView Background="{StaticResource BitGreenLight}">
 
-        <StackLayout>
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
             <!--  Hero  -->
           
 
-                <FlexLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Direction="{OnPlatform Row, Android=Column, iOS=Column}" FlexLayout.Grow=".40">
+                <FlexLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Direction="{OnPlatform Row, Android=Column, iOS=Column}" FlexLayout.Grow=".40">
 
 
                     <!--  BitBuggy Logo  -->
@@ -116,10 +116,10 @@
             
 
 
-            <FlexLayout
-                Direction="{OnPlatform Row,
-                                       Android=Column,
-                                       iOS=Column}"
+            <StackLayout
+                Orientation="{OnPlatform Horizontal,
+                                       Android=Vertical,
+                                       iOS=Vertical}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
                 FlexLayout.Grow=".60">
@@ -127,7 +127,7 @@
 
 
                 <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}">
+                <Frame BackgroundColor="{StaticResource BitGreenLight}" HorizontalOptions="FillAndExpand">
                     <Border
                         BackgroundColor="{StaticResource BitGoldLight}"
                         Stroke="{StaticResource BitGoldLight}"
@@ -156,7 +156,7 @@
                         </StackLayout>
                     </Border>
                 </Frame>
-            </FlexLayout>
+            </StackLayout>
 
         </StackLayout>
     </ScrollView>
