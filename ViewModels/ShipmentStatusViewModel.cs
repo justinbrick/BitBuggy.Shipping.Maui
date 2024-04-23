@@ -1,4 +1,4 @@
-﻿using BitBuggy.Shipping.Maui.Shipping.Models;
+﻿using BitBuggy.Shipping.Maui.Shipping.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,8 +34,8 @@ class ShipmentStatusViewModel : INotifyPropertyChanged
         }
     }
 
-    private ShipmentStatusModel.Status _status = ShipmentStatusModel.Status.Pending;
-    public ShipmentStatusModel.Status Status
+    private Status _status = Status.Pending;
+    public Status Status
     {
         get => _status;
         set

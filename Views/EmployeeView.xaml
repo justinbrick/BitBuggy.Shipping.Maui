@@ -3,7 +3,7 @@
     x:Class="BitBuggy.Shipping.Maui.Views.EmployeeView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:models="clr-namespace:BitBuggy.Shipping.Maui.Shipping.Model"
+    xmlns:models="clr-namespace:BitBuggy.Shipping.Maui.Shipping.Model;assembly=BitBuggy.Shipping.Maui.Shipping"
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
     Title="Management"
     x:DataType="viewmodels:EmployeeSearchViewModel"

@@ -25,7 +25,6 @@ internal class EnumStringConverter : IValueConverter
             throw new ArgumentException("Converting object must be an enumeration.");
         }
 
-        string name = Enum.GetName(targetType.GetType(), value)!;
         return ConvertToString((Enum)value);
 
     }

@@ -60,6 +60,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AndroidResource Remove="Shipping\**" />
+      <Compile Remove="Shipping\**" />
+      <EmbeddedResource Remove="Shipping\**" />
+      <MauiCss Remove="Shipping\**" />
+      <MauiXaml Remove="Shipping\**" />
+      <None Remove="Shipping\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <None Remove="Resources\Images\bit_buggy_image.png" />
     </ItemGroup>
 
@@ -72,6 +81,7 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Polly" Version="8.3.1" />
         <PackageReference Include="RestSharp" Version="110.2.0" />
+		<ProjectReference Include=".\Shipping\BitBuggy.Shipping.Maui.Shipping.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -84,12 +94,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <MauiXaml Update="ViewModels\EmplyeeView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="ViewModels\NewPage1.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
       <MauiXaml Update="Views\AccountPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
@@ -101,12 +105,6 @@
       </MauiXaml>
     </ItemGroup>
 
-    <ItemGroup>
-      <EditorConfigFiles Remove="C:\Users\Justin\source\repos\BitBuggy.Shipping.Maui\Shipping\.editorconfig" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="C:\Users\Justin\source\repos\BitBuggy.Shipping.Maui\Shipping\.editorconfig" />
-    </ItemGroup>
+   
 
 </Project>

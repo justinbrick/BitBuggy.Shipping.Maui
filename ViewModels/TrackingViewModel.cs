@@ -1,4 +1,3 @@
-using BitBuggy.Shipping.Maui.Shipping;
 using BitBuggy.Shipping.Maui.Shipping.Api;
 using BitBuggy.Shipping.Maui.Shipping.Model;
 using System.Collections.ObjectModel;
