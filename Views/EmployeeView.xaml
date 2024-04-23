@@ -92,13 +92,28 @@
                         <DataTemplate>
                             <StackLayout
                                 x:DataType="models:Shipment"
-                                Orientation="Horizontal"
+                                Orientation="Vertical"
                                 Spacing="10">
-                                <Label Text="Shipment" />
-                                <Label Text="{Binding ShipmentId}" />
-                                <Label Text="{Binding FromAddress}" />
-                                <Label Text="{Binding Provider}" />
-                                <Label Text="{Binding Items.Count}" />
+                                <Label FontSize="Small">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Shipment - " />
+                                            <Span Text="{Binding ShipmentId}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="Small">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Items.Count}" />
+                                            <Span Text=" Items | Provider: " />
+                                            <Span Text="{Binding Provider}" />
+                                            <Span Text=" | SLA: " />
+                                            <Span Text="PLACEHOLDER" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="" />
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
