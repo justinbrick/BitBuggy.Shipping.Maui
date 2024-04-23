@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitBuggy.Shipping.Maui", "BitBuggy.Shipping.Maui.csproj", "{210BE500-8C5D-42AF-813C-3A1616DCDF3D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitBuggy.Shipping.Maui.Shipping", "Shipping\BitBuggy.Shipping.Maui.Shipping.csproj", "{8EA84241-C10C-49F5-9FA1-696ECB0D7536}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,10 @@ Global
 		{210BE500-8C5D-42AF-813C-3A1616DCDF3D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{210BE500-8C5D-42AF-813C-3A1616DCDF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{210BE500-8C5D-42AF-813C-3A1616DCDF3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA84241-C10C-49F5-9FA1-696ECB0D7536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA84241-C10C-49F5-9FA1-696ECB0D7536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA84241-C10C-49F5-9FA1-696ECB0D7536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA84241-C10C-49F5-9FA1-696ECB0D7536}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

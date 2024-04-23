@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BitBuggy.Shipping.Maui.Shipping;
+namespace BitBuggy.Shipping.Maui;
 
-#nullable enable
 
 /// <summary>
 /// Info for authorization on Shipping API. 
