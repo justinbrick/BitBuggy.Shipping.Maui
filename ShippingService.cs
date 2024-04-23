@@ -32,7 +32,7 @@ public sealed class ShippingService(AccountAuthorizationService accountAuthoriza
             {
                 ["Authorization"] = $"Bearer {authenticationResult.AccessToken}"
             },
-            BasePath = "http://localhost:8000"
+            BasePath = "https://shipping.bitbuggy.dev"
         };
     }
 
