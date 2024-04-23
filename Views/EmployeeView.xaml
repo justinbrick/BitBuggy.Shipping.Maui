@@ -3,160 +3,108 @@
     x:Class="BitBuggy.Shipping.Maui.Views.EmployeeView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:BitBuggy.Shipping.Maui.Shipping.Model"
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
+    Title="Management"
     x:DataType="viewmodels:EmployeeSearchViewModel"
     Appearing="EmployeePage_Appearing">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="FrameStyle" TargetType="Frame">
-                <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
-                <Setter Property="CornerRadius" Value="10" />
-                <Setter Property="BackgroundColor" Value="{StaticResource BitGreenDark}" />
-
-            </Style>
-
-            <Style x:Key="StatusStyle" TargetType="Button">
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="Background" Value="{StaticResource BitGreenDark}" />
-                <Setter Property="BorderColor" Value="{StaticResource BitGoldLight}" />
-                <Setter Property="BorderWidth" Value="1" />
-            </Style>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <ScrollView Background="{StaticResource BitGreenLight}">
-
-        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
-            <!--  Hero  -->
-          
-
-                <FlexLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Direction="{OnPlatform Row, Android=Column, iOS=Column}" FlexLayout.Grow=".40">
 
 
-                    <!--  BitBuggy Logo  -->
-                    <Image
-                        Margin="30,30,0,0"
-                        Aspect="AspectFit"
-                        HeightRequest="150"
+    <ScrollView>
+
+        <StackLayout>
+            <!--  BitBuggy Logo  -->
+            <Image
+                Margin="30,30,0,0"
+                Aspect="AspectFit"
+                HeightRequest="150"
+                HorizontalOptions="Start"
+                Source="bit_buggy_image.png"
+                VerticalOptions="Center"
+                WidthRequest="150" />
+
+            <!--  Configurations for querying  -->
+            <StackLayout
+                Padding="20"
+                Orientation="{OnPlatform Vertical,
+                                         WinUI=Horizontal}"
+                Spacing="20">
+
+
+                <!--  In the case of these enumeration pickers, we always want them horizontal.  -->
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    Spacing="20">
+                    <!--  Allows picking a specific status  -->
+                    <Picker
+                        Title="Status"
                         HorizontalOptions="Center"
-                        Source="bit_buggy_image.png"
-                        VerticalOptions="Center"
+                        ItemsSource="{Static viewmodels:EmployeeSearchViewModel.StatusChoices}"
+                        SelectedItem="{Binding Status, Converter={StaticResource EnumStringConverter}, Mode=TwoWay}"
                         WidthRequest="150" />
 
+                    <!--  Allows picking a specific provider  -->
+                    <Picker
+                        Title="Provider"
+                        HorizontalOptions="Center"
+                        ItemsSource="{Static viewmodels:EmployeeSearchViewModel.ProviderChoices}"
+                        SelectedItem="{Binding Provider, Converter={StaticResource EnumStringConverter}, Mode=TwoWay}"
+                        WidthRequest="150" />
+                </StackLayout>
 
-                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                <!--  A search bar which allows for searching for the "from" address. (that sent the package, from warehouse)  -->
+                <SearchBar
+                    Placeholder="From Address (warehouse address)"
+                    SearchCommand="{Binding SearchDelivery}"
+                    Text="{Binding FromAddress}" />
 
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="Medium"
-                            HorizontalOptions="Center"
-                            Text="Select Status: "
-                            TextColor="{StaticResource BitGoldLight}"
-                            VerticalOptions="Center" />
+                <!--  A search bar for searching for the "to" address (that received the package)  -->
+                <SearchBar
+                    Placeholder="To Address (customer address)"
+                    SearchCommand="{Binding SearchDelivery}"
+                    Text="{Binding ToAddress}" />
 
+                <!--  A search bar which allows for searching a very generic tracking ID.  -->
+                <SearchBar
+                    Placeholder="Enter Tracking ID (UPS/USPS/Fedex/Internal)"
+                    SearchCommand="{Binding SearchDelivery}"
+                    Text="{Binding TrackingId}" />
 
+                <!--  Sends another search query, in case not done through search bar.  -->
+                <Button
+                    Command="{Binding SearchDelivery}"
+                    FontAttributes="Bold"
+                    Text="Search" />
 
-                        <Picker
-                            Margin="0,0,0,30"
-                            BackgroundColor="White"
-                            HorizontalOptions="Center"
-                            ItemsSource="{Static viewmodels:EmployeeSearchViewModel.StatusChoices}"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="300" />
-                        
-                        
-
-
-
-
-
-                        <!--  Label for the Shipment Tracking Interface  -->
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="Medium"
-                            HorizontalOptions="Center"
-                            Text="Tracking ID/Number"
-                            TextColor="{StaticResource BitGoldLight}" />
-
-
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                    <Entry
-                                    WidthRequest="230"
-                                    Placeholder="Tracking ID/Number"
-                                    Text="{Binding TrackingId}"
-                                    BackgroundColor="White"
-                                    BindingContext="0"
-                                    Margin="0"
-                                    />
-
-                                    <Button
-                                    Command="{Binding SearchDelivery}"
-                                    Text="Search" BackgroundColor="{StaticResource BitGoldLight}"
-                                    TextColor="{StaticResource BitGreenDark}"
-                                    FontAttributes="Bold"
-                                    Margin="0,0,0,0"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center">
-
-
-                                 </Button>
-
-                    </StackLayout>
-
-
-
-                    </StackLayout>
-
-
-
-
-                </FlexLayout>
-
-            
-
-
-            <StackLayout
-                Orientation="{OnPlatform Horizontal,
-                                       Android=Vertical,
-                                       iOS=Vertical}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                FlexLayout.Grow=".60">
-
-
-
-                <!--  Status Frame  -->
-                <Frame BackgroundColor="{StaticResource BitGreenLight}" HorizontalOptions="FillAndExpand">
-                    <Border
-                        BackgroundColor="{StaticResource BitGoldLight}"
-                        Stroke="{StaticResource BitGoldLight}"
-                        StrokeThickness="10">
-                        <StackLayout BackgroundColor="{StaticResource BitGreenDark}">
-
-                            <!--  Top to Bottom Status  -->
-                            <VerticalStackLayout Margin="10" VerticalOptions="Start">
-
-
-
-                                <!--  Status Buttons  -->
-                                <StackLayout
-                                    HorizontalOptions="Center"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="Start">
-
-                                    <!--  Center for both  -->
-
-                                </StackLayout>
-                            </VerticalStackLayout>
-
-
-                            <!--  Your content here  -->
-
-                        </StackLayout>
-                    </Border>
-                </Frame>
             </StackLayout>
+
+            <Border
+                Margin="10"
+                Padding="10"
+                HeightRequest="500"
+                HorizontalOptions="Fill">
+                <CollectionView
+                    HorizontalOptions="Fill"
+                    ItemsSource="{Binding Shipments}"
+                    VerticalOptions="Fill">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                x:DataType="models:Shipment"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <Label Text="Shipment" />
+                                <Label Text="{Binding ShipmentId}" />
+                                <Label Text="{Binding FromAddress}" />
+                                <Label Text="{Binding Provider}" />
+                                <Label Text="{Binding Items.Count}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+
 
         </StackLayout>
     </ScrollView>

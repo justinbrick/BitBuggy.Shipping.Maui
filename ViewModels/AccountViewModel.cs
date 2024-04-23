@@ -23,6 +23,8 @@ public class AccountViewModel : INotifyPropertyChanged
     private readonly IPublicClientApplication _clientApplication;
     private readonly ILogger _logger;
     private bool _signedIn = false;
+    private bool _deliveryStaff = false;
+    private bool _managementStaff = false;
     private string? _firstName;
     private string? _lastName;
     private string? _loginFailureMessage;
@@ -74,6 +76,32 @@ public class AccountViewModel : INotifyPropertyChanged
         }
     }
 
+    public bool ManagementStaff
+    {
+        get => _managementStaff;
+        set
+        {
+            if (_managementStaff != value)
+            {
+                _managementStaff = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ManagementStaff)));
+            }
+        }
+    }
+
+    public bool DeliveryStaff
+    {
+        get => _deliveryStaff;
+        set
+        {
+            if (_deliveryStaff != value)
+            {
+                _deliveryStaff = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DeliveryStaff)));
+            }
+        }
+    }
+
     public ICommand SignInCommand { get; }
     public ICommand SignOutCommand { get; }
     public ICommand RefreshCommand { get; }
@@ -105,12 +133,16 @@ public class AccountViewModel : INotifyPropertyChanged
 
     public bool SignedOut => !SignedIn;
 
-    private void AssignPropertiesFromPrincipal(ClaimsPrincipal principal)
+    private void AssignPropertiesFromPrincipal(ClaimsPrincipal? principal)
     {
         LoginFailureMessage = null;
-        SignedIn = true;
-        FirstName = principal.FindFirst("given_name")?.Value;
-        LastName = principal.FindFirst("family_name")?.Value;
+        SignedIn = principal is not null;
+        FirstName = principal?.FindFirst("given_name")?.Value;
+        LastName = principal?.FindFirst("family_name")?.Value;
+        string roleString = principal?.FindFirst("extension_roles")?.Value ?? string.Empty;
+        string[] roles = roleString.Split(",");
+        ManagementStaff = roles.Contains("SHP-STF");
+        DeliveryStaff = roles.Contains("SHP-DLR");
     }
 
     /// <summary>
@@ -145,8 +177,7 @@ public class AccountViewModel : INotifyPropertyChanged
             await _clientApplication.RemoveAsync(account);
         }
 
-        SignedIn = false;
-
+        AssignPropertiesFromPrincipal(null);
     }
 
     /// <summary>

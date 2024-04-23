@@ -8,7 +8,7 @@
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
     xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
     x:Name="Page"
-    Title="CustomerPage"
+    Title="Tracking"
     x:DataType="viewmodels:TrackingViewModel"
     Appearing="OnAppearing">
 
@@ -32,7 +32,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView Background="{StaticResource BitGreenLight}">
+    <ScrollView>
 
         <StackLayout VerticalOptions="FillAndExpand">
             <!--  Hero  -->
@@ -129,10 +129,10 @@
                                     Spacing="2">
 
                                     <!--  Center for both  -->
-                                    <Button Background="{Binding SelectedShipmentStatus.Message, FallbackValue=0, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Pending}}" Style="{StaticResource StatusStyle}" />
-                                    <Button Background="{Binding SelectedShipmentStatus.Message, FallbackValue=0, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Shipped}}" Style="{StaticResource StatusStyle}" />
-                                    <Button Background="{Binding SelectedShipmentStatus.Message, FallbackValue=0, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=InTransit}}" Style="{StaticResource StatusStyle}" />
-                                    <Button Background="{Binding SelectedShipmentStatus.Message, FallbackValue=0, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Delivered}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Pending}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Shipped}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=InTransit}}" Style="{StaticResource StatusStyle}" />
+                                    <Button Background="{Binding SelectedShipmentStatus.Message, Converter={converters:ShipmentStatusToColorConverter DesiredStatus=Delivered}}" Style="{StaticResource StatusStyle}" />
                                 </StackLayout>
 
                                 <!--  A message for the current status  -->

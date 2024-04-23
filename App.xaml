@@ -14,6 +14,7 @@
             <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             <converters:NullToBoolConverter x:Key="NullBoolConverter" />
             <converters:NullToBoolConverter x:Key="InvertedNullBoolConverter" Invert="True" />
+            <converters:EnumStringConverter x:Key="EnumStringConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

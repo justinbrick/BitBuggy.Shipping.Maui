@@ -1,4 +1,5 @@
 using BitBuggy.Shipping.Maui.Shipping;
+using BitBuggy.Shipping.Maui.Shipping.Api;
 using BitBuggy.Shipping.Maui.Shipping.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -112,14 +113,13 @@ public class TrackingViewModel : INotifyPropertyChanged
 
     public async Task RetrieveDeliveriesAsync()
     {
-        //MeApi? me = await _shipping.GetMeAsync();
-        //if (me is null)
-        //{
-        //    return;
-        //}
+        MeApi? me = await _shipping.GetMeAsync();
+        if (me is null)
+        {
+            return;
+        }
 
-        // await me.GetPersonalDeliveriesAsync();
-        List<Delivery> deliveryList = GenerateRandomDeliveries().ToList();
+        List<Delivery> deliveryList = await me.GetPersonalDeliveriesAsync();
 
         DeliveryList = new(deliveryList);
     }

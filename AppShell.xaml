@@ -29,7 +29,7 @@
             x:Name="EmployeeTab"
             Title="Employee"
             ContentTemplate="{DataTemplate views:EmployeeView}"
-            IsVisible="{Binding SignedIn}"
+            IsVisible="{Binding ManagementStaff}"
             Route="employee" />
 
     </FlyoutItem>

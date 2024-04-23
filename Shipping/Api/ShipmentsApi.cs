@@ -91,7 +91,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="userId"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Shipment&gt;</returns>
-        List<Shipment> GetShipments(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0);
+        List<Shipment> GetShipments(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0);
 
         /// <summary>
         /// Get Shipments
@@ -112,7 +112,32 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="userId"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Shipment&gt;</returns>
-        ApiResponse<List<Shipment>> GetShipmentsWithHttpInfo(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0);
+        ApiResponse<List<Shipment>> GetShipmentsWithHttpInfo(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0);
+        /// <summary>
+        /// Update Shipment Status
+        /// </summary>
+        /// <remarks>
+        /// Update the status of a shipment.
+        /// </remarks>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ShipmentStatus</returns>
+        ShipmentStatus UpdateShipmentStatus(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Update Shipment Status
+        /// </summary>
+        /// <remarks>
+        /// Update the status of a shipment.
+        /// </remarks>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ShipmentStatus</returns>
+        ApiResponse<ShipmentStatus> UpdateShipmentStatusWithHttpInfo(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -192,7 +217,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Shipment&gt;</returns>
-        System.Threading.Tasks.Task<List<Shipment>> GetShipmentsAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<Shipment>> GetShipmentsAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get Shipments
@@ -214,7 +239,34 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Shipment&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Shipment>>> GetShipmentsWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<Shipment>>> GetShipmentsWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Update Shipment Status
+        /// </summary>
+        /// <remarks>
+        /// Update the status of a shipment.
+        /// </remarks>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ShipmentStatus</returns>
+        System.Threading.Tasks.Task<ShipmentStatus> UpdateShipmentStatusAsync(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Update Shipment Status
+        /// </summary>
+        /// <remarks>
+        /// Update the status of a shipment.
+        /// </remarks>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ShipmentStatus)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ShipmentStatus>> UpdateShipmentStatusWithHttpInfoAsync(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -615,7 +667,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="userId"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Shipment&gt;</returns>
-        public List<Shipment> GetShipments(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0)
+        public List<Shipment> GetShipments(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0)
         {
             BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> localVarResponse = GetShipmentsWithHttpInfo(limit, offset, dateDesc, status, provider, fromAddress, shippingAddress, deliveryId, trackingId, userId);
             return localVarResponse.Data;
@@ -637,7 +689,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="userId"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Shipment&gt;</returns>
-        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> GetShipmentsWithHttpInfo(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0)
+        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> GetShipmentsWithHttpInfo(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0)
         {
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
 
@@ -737,7 +789,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Shipment&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Shipment>> GetShipmentsAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<Shipment>> GetShipmentsAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>> localVarResponse = await GetShipmentsWithHttpInfoAsync(limit, offset, dateDesc, status, provider, fromAddress, shippingAddress, deliveryId, trackingId, userId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -760,7 +812,7 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Shipment&gt;)</returns>
-        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>>> GetShipmentsWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), Guid? deliveryId = default(Guid?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<List<Shipment>>> GetShipmentsWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), bool? dateDesc = default(bool?), Status? status = default(Status?), Provider? provider = default(Provider?), string? fromAddress = default(string?), string? shippingAddress = default(string?), string? deliveryId = default(string?), string? trackingId = default(string?), Guid? userId = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
@@ -836,6 +888,158 @@ namespace BitBuggy.Shipping.Maui.Shipping.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetShipments", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update Shipment Status Update the status of a shipment.
+        /// </summary>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ShipmentStatus</returns>
+        public ShipmentStatus UpdateShipmentStatus(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0)
+        {
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> localVarResponse = UpdateShipmentStatusWithHttpInfo(shipmentId, shipmentStatusPatchRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update Shipment Status Update the status of a shipment.
+        /// </summary>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ShipmentStatus</returns>
+        public BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> UpdateShipmentStatusWithHttpInfo(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'shipmentStatusPatchRequest' is set
+            if (shipmentStatusPatchRequest == null)
+            {
+                throw new BitBuggy.Shipping.Maui.Shipping.Client.ApiException(400, "Missing required parameter 'shipmentStatusPatchRequest' when calling ShipmentsApi->UpdateShipmentStatus");
+            }
+
+            BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("shipment_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+            localVarRequestOptions.Data = shipmentStatusPatchRequest;
+
+            localVarRequestOptions.Operation = "ShipmentsApi.UpdateShipmentStatus";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<ShipmentStatus>("/shipments/{shipment_id}/status", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateShipmentStatus", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update Shipment Status Update the status of a shipment.
+        /// </summary>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ShipmentStatus</returns>
+        public async System.Threading.Tasks.Task<ShipmentStatus> UpdateShipmentStatusAsync(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus> localVarResponse = await UpdateShipmentStatusWithHttpInfoAsync(shipmentId, shipmentStatusPatchRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update Shipment Status Update the status of a shipment.
+        /// </summary>
+        /// <exception cref="BitBuggy.Shipping.Maui.Shipping.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId"></param>
+        /// <param name="shipmentStatusPatchRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ShipmentStatus)</returns>
+        public async System.Threading.Tasks.Task<BitBuggy.Shipping.Maui.Shipping.Client.ApiResponse<ShipmentStatus>> UpdateShipmentStatusWithHttpInfoAsync(Guid shipmentId, ShipmentStatusPatchRequest shipmentStatusPatchRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'shipmentStatusPatchRequest' is set
+            if (shipmentStatusPatchRequest == null)
+            {
+                throw new BitBuggy.Shipping.Maui.Shipping.Client.ApiException(400, "Missing required parameter 'shipmentStatusPatchRequest' when calling ShipmentsApi->UpdateShipmentStatus");
+            }
+
+
+            BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions localVarRequestOptions = new BitBuggy.Shipping.Maui.Shipping.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("shipment_id", BitBuggy.Shipping.Maui.Shipping.Client.ClientUtils.ParameterToString(shipmentId)); // path parameter
+            localVarRequestOptions.Data = shipmentStatusPatchRequest;
+
+            localVarRequestOptions.Operation = "ShipmentsApi.UpdateShipmentStatus";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<ShipmentStatus>("/shipments/{shipment_id}/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateShipmentStatus", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

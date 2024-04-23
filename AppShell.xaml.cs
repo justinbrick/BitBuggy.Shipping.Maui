@@ -19,6 +19,7 @@ public partial class AppShell : Shell
     {
         if (e.PropertyName == nameof(AccountViewModel.SignedIn))
         {
+            EmployeeTab.FlyoutItemIsVisible = _accountViewModel.ManagementStaff;
             ForceLayout();
         }
     }
