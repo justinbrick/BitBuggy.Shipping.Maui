@@ -10,6 +10,12 @@
 
 
     <VerticalStackLayout>
+        <Image
+            Margin="15"
+            Aspect="AspectFit"
+            HeightRequest="200"
+            Rotation="1"
+            Source="bit_buggy_image.png" />
         <Label
             Margin="30"
             HorizontalOptions="Center"

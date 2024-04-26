@@ -171,20 +171,24 @@ public class EmployeeSearchViewModel
         string? trackingId = string.IsNullOrEmpty(TrackingId) ? null : TrackingId;
         string? deliveryId = string.IsNullOrEmpty(DeliveryId) ? null : DeliveryId;
 
-        List<Shipment> shipments = await api.GetShipmentsAsync(
-            fromAddress: from,
-            shippingAddress: to,
-            status: Status,
-            provider: Provider,
-            deliveryId: deliveryId,
-            trackingId: trackingId
-        );
-
-        Shipments.Clear();
-
-        foreach(Shipment shipment in shipments)
+        try
         {
-            Shipments.Add(shipment);
+            List<Shipment> shipments = await api.GetShipmentsAsync(
+                fromAddress: from,
+                shippingAddress: to,
+                status: Status,
+                provider: Provider,
+                deliveryId: deliveryId,
+                trackingId: trackingId
+            );
+
+            Shipments.Clear();
+
+            foreach (Shipment shipment in shipments)
+            {
+                Shipments.Add(shipment);
+            }
         }
+        catch (Exception) { }
     }
 }

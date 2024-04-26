@@ -56,7 +56,6 @@
                     Text="Shipment Tracking Interface"
                     TextColor="{StaticResource BitGoldLight}" />
 
-                <Label Text="{Binding DeliveryList.Count}" />
             </StackLayout>
 
 

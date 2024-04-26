@@ -112,15 +112,21 @@ public class TrackingViewModel : INotifyPropertyChanged
 
     public async Task RetrieveDeliveriesAsync()
     {
-        MeApi? me = await _shipping.GetMeAsync();
-        if (me is null)
+        try
         {
-            return;
+            MeApi? me = await _shipping.GetMeAsync();
+            if (me is null)
+            {
+                return;
+            }
+
+            List<Delivery> deliveryList = await me.GetPersonalDeliveriesAsync();
+
+            DeliveryList = new(deliveryList);
+        } catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
         }
-
-        List<Delivery> deliveryList = await me.GetPersonalDeliveriesAsync();
-
-        DeliveryList = new(deliveryList);
     }
 
     // TEST ONLY THINGS - REMOVE LATER

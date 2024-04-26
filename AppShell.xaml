@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:BitBuggy.Shipping.Maui"
     xmlns:viewmodels="clr-namespace:BitBuggy.Shipping.Maui.ViewModels"
     xmlns:views="clr-namespace:BitBuggy.Shipping.Maui.Views"
-    Title="BitBuggy.Shipping.Maui"
+    Title="BitBuggy - Shipping"
     x:DataType="viewmodels:AccountViewModel"
     Appearing="OnAppearing"
     Shell.FlyoutBehavior="Flyout">
